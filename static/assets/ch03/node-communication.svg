@@ -1,0 +1,82 @@
+<svg width="600" height="350" viewBox="0 0 600 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- ROS 2 Communication Patterns -->
+
+  <!-- Title -->
+  <text x="300" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#24292e">ROS 2 Communication Patterns</text>
+
+  <!-- Topics section -->
+  <rect x="20" y="50" width="170" height="120" rx="8" fill="#f5f7fa" stroke="#e1e4e8" stroke-width="1"/>
+  <text x="105" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#22314e">Topics (Pub-Sub)</text>
+
+  <rect x="40" y="85" width="50" height="25" rx="4" fill="#22314e"/>
+  <text x="65" y="102" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Pub</text>
+
+  <rect x="120" y="85" width="50" height="25" rx="4" fill="#2e8555"/>
+  <text x="145" y="102" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Sub 1</text>
+
+  <rect x="120" y="120" width="50" height="25" rx="4" fill="#2e8555"/>
+  <text x="145" y="137" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Sub 2</text>
+
+  <path d="M95 97 L115 97" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M95 97 L95 132 L115 132" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <text x="105" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">1-to-many, async</text>
+
+  <!-- Services section -->
+  <rect x="215" y="50" width="170" height="120" rx="8" fill="#f5f7fa" stroke="#e1e4e8" stroke-width="1"/>
+  <text x="300" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#22314e">Services (Req-Res)</text>
+
+  <rect x="235" y="100" width="50" height="25" rx="4" fill="#22314e"/>
+  <text x="260" y="117" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Client</text>
+
+  <rect x="315" y="100" width="50" height="25" rx="4" fill="#f58113"/>
+  <text x="340" y="117" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Server</text>
+
+  <path d="M290 107 L310 107" stroke="#0066cc" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M310 118 L290 118" stroke="#28a745" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <text x="300" y="90" font-family="Arial, sans-serif" font-size="8" fill="#0066cc">request</text>
+  <text x="300" y="140" font-family="Arial, sans-serif" font-size="8" fill="#28a745">response</text>
+  <text x="300" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">1-to-1, sync</text>
+
+  <!-- Actions section -->
+  <rect x="410" y="50" width="170" height="120" rx="8" fill="#f5f7fa" stroke="#e1e4e8" stroke-width="1"/>
+  <text x="495" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#22314e">Actions (Long-Running)</text>
+
+  <rect x="430" y="95" width="50" height="25" rx="4" fill="#22314e"/>
+  <text x="455" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Client</text>
+
+  <rect x="510" y="95" width="50" height="25" rx="4" fill="#76b900"/>
+  <text x="535" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Server</text>
+
+  <path d="M485 100 L505 100" stroke="#0066cc" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M505 107 L485 107" stroke="#ffc107" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M505 115 L485 115" stroke="#28a745" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <text x="495" y="88" font-family="Arial, sans-serif" font-size="7" fill="#0066cc">goal</text>
+  <text x="495" y="130" font-family="Arial, sans-serif" font-size="7" fill="#ffc107">feedback</text>
+  <text x="495" y="143" font-family="Arial, sans-serif" font-size="7" fill="#28a745">result</text>
+  <text x="495" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#666">preemptable</text>
+
+  <!-- DDS Layer -->
+  <rect x="20" y="200" width="560" height="50" rx="8" fill="#e7f3ff" stroke="#0066cc" stroke-width="2"/>
+  <text x="300" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0066cc">DDS Middleware (Fast DDS / Cyclone DDS)</text>
+
+  <!-- Connection lines to DDS -->
+  <line x1="105" y1="170" x2="105" y2="200" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="300" y1="170" x2="300" y2="200" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="495" y1="170" x2="495" y2="200" stroke="#666" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Legend -->
+  <text x="20" y="280" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#24292e">Use Cases:</text>
+  <text x="20" y="300" font-family="Arial, sans-serif" font-size="10" fill="#666">• Topics: Sensor data, velocity commands, camera images</text>
+  <text x="20" y="315" font-family="Arial, sans-serif" font-size="10" fill="#666">• Services: Parameter queries, mode changes, one-shot computations</text>
+  <text x="20" y="330" font-family="Arial, sans-serif" font-size="10" fill="#666">• Actions: Navigation goals, manipulation tasks, trajectory execution</text>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+    </marker>
+  </defs>
+</svg>

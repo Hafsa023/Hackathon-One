@@ -1,0 +1,8 @@
+{
+  "label": "Lab Setup",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Hardware, tools, and development environment configuration"
+  }
+}

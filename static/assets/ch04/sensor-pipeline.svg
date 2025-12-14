@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 450">
+  <defs>
+    <linearGradient id="simGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#673AB7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4527A0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bridgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00BCD4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00838F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="rosGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="appGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF5722;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D84315;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="425" y="35" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">Gazebo Sensor Data Pipeline</text>
+
+  <!-- Stage Labels -->
+  <text x="110" y="70" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">SIMULATION</text>
+  <text x="330" y="70" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">BRIDGE</text>
+  <text x="550" y="70" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">ROS 2</text>
+  <text x="750" y="70" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">APPLICATION</text>
+
+  <!-- LiDAR Row -->
+  <rect x="30" y="90" width="160" height="70" rx="8" fill="url(#simGrad)"/>
+  <text x="110" y="115" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">GPU LiDAR Plugin</text>
+  <text x="110" y="135" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Ray casting + Noise</text>
+  <text x="110" y="150" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">gz.msgs.LaserScan</text>
+
+  <path d="M190 125 L250 125" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="250" y="90" width="160" height="70" rx="8" fill="url(#bridgeGrad)"/>
+  <text x="330" y="115" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">ros_gz_bridge</text>
+  <text x="330" y="135" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Type Conversion</text>
+  <text x="330" y="150" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">GZ_TO_ROS</text>
+
+  <path d="M410 125 L470 125" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="470" y="90" width="160" height="70" rx="8" fill="url(#rosGrad)"/>
+  <text x="550" y="115" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">/scan Topic</text>
+  <text x="550" y="135" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">sensor_msgs/LaserScan</text>
+  <text x="550" y="150" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">QoS: Best Effort</text>
+
+  <path d="M630 125 L690 125" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="690" y="90" width="130" height="70" rx="8" fill="url(#appGrad)"/>
+  <text x="755" y="115" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Obstacle</text>
+  <text x="755" y="135" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Detection</text>
+  <text x="755" y="150" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Navigation</text>
+
+  <!-- Depth Camera Row -->
+  <rect x="30" y="180" width="160" height="70" rx="8" fill="url(#simGrad)"/>
+  <text x="110" y="205" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Depth Camera</text>
+  <text x="110" y="225" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">GPU Rendering</text>
+  <text x="110" y="240" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">gz.msgs.Image</text>
+
+  <path d="M190 215 L250 215" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="250" y="180" width="160" height="70" rx="8" fill="url(#bridgeGrad)"/>
+  <text x="330" y="205" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">ros_gz_image</text>
+  <text x="330" y="225" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Image Transport</text>
+  <text x="330" y="240" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">GZ_TO_ROS</text>
+
+  <path d="M410 215 L470 215" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="470" y="180" width="160" height="70" rx="8" fill="url(#rosGrad)"/>
+  <text x="550" y="205" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">/depth/image Topic</text>
+  <text x="550" y="225" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">sensor_msgs/Image</text>
+  <text x="550" y="240" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">32FC1 Format</text>
+
+  <path d="M630 215 L690 215" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="690" y="180" width="130" height="70" rx="8" fill="url(#appGrad)"/>
+  <text x="755" y="205" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Point Cloud</text>
+  <text x="755" y="225" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Generation</text>
+  <text x="755" y="240" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">SLAM</text>
+
+  <!-- IMU Row -->
+  <rect x="30" y="270" width="160" height="70" rx="8" fill="url(#simGrad)"/>
+  <text x="110" y="295" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">IMU Sensor</text>
+  <text x="110" y="315" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Accel + Gyro + Noise</text>
+  <text x="110" y="330" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">gz.msgs.IMU</text>
+
+  <path d="M190 305 L250 305" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="250" y="270" width="160" height="70" rx="8" fill="url(#bridgeGrad)"/>
+  <text x="330" y="295" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">ros_gz_bridge</text>
+  <text x="330" y="315" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Type Conversion</text>
+  <text x="330" y="330" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">GZ_TO_ROS</text>
+
+  <path d="M410 305 L470 305" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="470" y="270" width="160" height="70" rx="8" fill="url(#rosGrad)"/>
+  <text x="550" y="295" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">/imu/data Topic</text>
+  <text x="550" y="315" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">sensor_msgs/Imu</text>
+  <text x="550" y="330" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">100 Hz</text>
+
+  <path d="M630 305 L690 305" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="690" y="270" width="130" height="70" rx="8" fill="url(#appGrad)"/>
+  <text x="755" y="295" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">State</text>
+  <text x="755" y="315" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Estimation</text>
+  <text x="755" y="330" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">EKF Fusion</text>
+
+  <!-- Command Row (reverse direction) -->
+  <rect x="690" y="360" width="130" height="70" rx="8" fill="url(#appGrad)"/>
+  <text x="755" y="385" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Motion</text>
+  <text x="755" y="405" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Controller</text>
+  <text x="755" y="420" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Twist cmds</text>
+
+  <path d="M690 395 L630 395" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="470" y="360" width="160" height="70" rx="8" fill="url(#rosGrad)"/>
+  <text x="550" y="385" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">/cmd_vel Topic</text>
+  <text x="550" y="405" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">geometry_msgs/Twist</text>
+  <text x="550" y="420" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Velocity Command</text>
+
+  <path d="M470 395 L410 395" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="250" y="360" width="160" height="70" rx="8" fill="url(#bridgeGrad)"/>
+  <text x="330" y="385" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">ros_gz_bridge</text>
+  <text x="330" y="405" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Type Conversion</text>
+  <text x="330" y="420" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">ROS_TO_GZ</text>
+
+  <path d="M250 395 L190 395" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="30" y="360" width="160" height="70" rx="8" fill="url(#simGrad)"/>
+  <text x="110" y="385" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Diff Drive Plugin</text>
+  <text x="110" y="405" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Applies velocities</text>
+  <text x="110" y="420" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">gz.msgs.Twist</text>
+</svg>

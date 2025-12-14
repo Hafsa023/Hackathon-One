@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380">
+  <defs>
+    <linearGradient id="geometryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5C6BC0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3949AB;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="lightingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFB300;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8F00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="materialsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#26A69A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00897B;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="postGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EC407A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C2185B;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7CB342;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#558B2F;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrowPipe" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">HDRP Rendering Pipeline for Robotics Simulation</text>
+
+  <!-- Pipeline stages -->
+
+  <!-- Stage 1: Geometry -->
+  <rect x="30" y="60" width="150" height="180" rx="10" fill="url(#geometryGrad)"/>
+  <text x="105" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">1. Geometry</text>
+  <rect x="45" y="105" width="120" height="25" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="105" y="122" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Culling</text>
+  <rect x="45" y="140" width="120" height="25" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="105" y="157" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Depth Prepass</text>
+  <rect x="45" y="175" width="120" height="25" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="105" y="192" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">GBuffer</text>
+  <rect x="45" y="210" width="120" height="20" rx="4" fill="rgba(255,255,255,0.15)"/>
+  <text x="105" y="224" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">Motion Vectors</text>
+
+  <line x1="180" y1="150" x2="200" y2="150" stroke="#666" stroke-width="2" marker-end="url(#arrowPipe)"/>
+
+  <!-- Stage 2: Lighting -->
+  <rect x="200" y="60" width="150" height="180" rx="10" fill="url(#lightingGrad)"/>
+  <text x="275" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">2. Lighting</text>
+  <rect x="215" y="105" width="120" height="25" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="275" y="122" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Directional Light</text>
+  <rect x="215" y="140" width="120" height="25" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="275" y="157" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Area Lights</text>
+  <rect x="215" y="175" width="120" height="25" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="275" y="192" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Global Illumination</text>
+  <rect x="215" y="210" width="120" height="20" rx="4" fill="rgba(255,255,255,0.15)"/>
+  <text x="275" y="224" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">Ray-traced Shadows</text>
+
+  <line x1="350" y1="150" x2="370" y2="150" stroke="#666" stroke-width="2" marker-end="url(#arrowPipe)"/>
+
+  <!-- Stage 3: Materials -->
+  <rect x="370" y="60" width="150" height="180" rx="10" fill="url(#materialsGrad)"/>
+  <text x="445" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">3. Materials</text>
+  <rect x="385" y="105" width="120" height="25" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="445" y="122" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">PBR Shading</text>
+  <rect x="385" y="140" width="120" height="25" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="445" y="157" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Subsurface Scatter</text>
+  <rect x="385" y="175" width="120" height="25" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="445" y="192" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Reflections</text>
+  <rect x="385" y="210" width="120" height="20" rx="4" fill="rgba(255,255,255,0.15)"/>
+  <text x="445" y="224" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">Transparency</text>
+
+  <line x1="520" y1="150" x2="540" y2="150" stroke="#666" stroke-width="2" marker-end="url(#arrowPipe)"/>
+
+  <!-- Stage 4: Post-Processing -->
+  <rect x="540" y="60" width="150" height="180" rx="10" fill="url(#postGrad)"/>
+  <text x="615" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">4. Post-Process</text>
+  <rect x="555" y="105" width="120" height="25" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="615" y="122" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Bloom</text>
+  <rect x="555" y="140" width="120" height="25" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="615" y="157" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Depth of Field</text>
+  <rect x="555" y="175" width="120" height="25" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="615" y="192" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Motion Blur</text>
+  <rect x="555" y="210" width="120" height="20" rx="4" fill="rgba(255,255,255,0.15)"/>
+  <text x="615" y="224" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">Tonemapping</text>
+
+  <line x1="690" y1="150" x2="710" y2="150" stroke="#666" stroke-width="2" marker-end="url(#arrowPipe)"/>
+
+  <!-- Stage 5: Output -->
+  <rect x="710" y="60" width="160" height="180" rx="10" fill="url(#outputGrad)"/>
+  <text x="790" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">5. Output</text>
+  <rect x="725" y="105" width="130" height="40" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="790" y="125" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Final Frame</text>
+  <text x="790" y="140" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">(4K, HDR)</text>
+  <rect x="725" y="155" width="130" height="40" rx="4" fill="rgba(255,255,255,0.2)"/>
+  <text x="790" y="175" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Depth Buffer</text>
+  <text x="790" y="190" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">(Training Data)</text>
+  <rect x="725" y="205" width="130" height="30" rx="4" fill="rgba(255,255,255,0.15)"/>
+  <text x="790" y="224" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">Segmentation Mask</text>
+
+  <!-- Robotics Benefits Section -->
+  <text x="450" y="275" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">Key Benefits for Robotics Simulation</text>
+
+  <rect x="50" y="295" width="200" height="60" rx="8" fill="#E8EAF6" stroke="#3949AB"/>
+  <text x="150" y="320" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#1A237E" text-anchor="middle">Photorealistic Training</text>
+  <text x="150" y="340" font-family="Arial, sans-serif" font-size="10" fill="#1A237E" text-anchor="middle">Reduces sim-to-real gap</text>
+
+  <rect x="270" y="295" width="200" height="60" rx="8" fill="#FFF3E0" stroke="#FF8F00"/>
+  <text x="370" y="320" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#E65100" text-anchor="middle">Physical Lighting</text>
+  <text x="370" y="340" font-family="Arial, sans-serif" font-size="10" fill="#E65100" text-anchor="middle">Lux-based illumination</text>
+
+  <rect x="490" y="295" width="200" height="60" rx="8" fill="#E0F2F1" stroke="#00897B"/>
+  <text x="590" y="320" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#004D40" text-anchor="middle">Material Accuracy</text>
+  <text x="590" y="340" font-family="Arial, sans-serif" font-size="10" fill="#004D40" text-anchor="middle">PBR matches real surfaces</text>
+
+  <rect x="710" y="295" width="160" height="60" rx="8" fill="#FCE4EC" stroke="#C2185B"/>
+  <text x="790" y="320" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#880E4F" text-anchor="middle">Multi-Output</text>
+  <text x="790" y="340" font-family="Arial, sans-serif" font-size="10" fill="#880E4F" text-anchor="middle">RGB + Depth + Semantic</text>
+</svg>

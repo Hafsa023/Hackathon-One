@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 450">
+  <defs>
+    <linearGradient id="cpuGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1565C0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D47A1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gpuGrad7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#76B900;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A7C00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ramGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6F00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E65100;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="storageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7B1FA2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A148C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="425" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">Physical AI Workstation Architecture</text>
+
+  <!-- Workstation Container -->
+  <rect x="30" y="50" width="450" height="380" rx="15" fill="#ECEFF1" stroke="#607D8B" stroke-width="3"/>
+  <text x="255" y="80" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#37474F" text-anchor="middle">Development Workstation</text>
+
+  <!-- CPU -->
+  <rect x="50" y="100" width="180" height="100" rx="10" fill="url(#cpuGrad)"/>
+  <text x="140" y="130" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">CPU</text>
+  <text x="140" y="150" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">AMD Threadripper / EPYC</text>
+  <text x="140" y="170" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">32+ cores for ROS 2</text>
+  <text x="140" y="185" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Multi-threaded simulation</text>
+
+  <!-- GPU -->
+  <rect x="250" y="100" width="210" height="100" rx="10" fill="url(#gpuGrad7)"/>
+  <text x="355" y="130" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">GPU</text>
+  <text x="355" y="150" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">NVIDIA RTX 4090 (24GB)</text>
+  <text x="355" y="170" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Isaac Sim / Training</text>
+  <text x="355" y="185" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">82.6 TFLOPS FP32</text>
+
+  <!-- RAM -->
+  <rect x="50" y="220" width="180" height="80" rx="10" fill="url(#ramGrad)"/>
+  <text x="140" y="250" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">RAM</text>
+  <text x="140" y="270" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">64-128GB DDR5</text>
+  <text x="140" y="285" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Large model inference</text>
+
+  <!-- Storage -->
+  <rect x="250" y="220" width="210" height="80" rx="10" fill="url(#storageGrad)"/>
+  <text x="355" y="250" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Storage</text>
+  <text x="355" y="270" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">2TB NVMe (7GB/s)</text>
+  <text x="355" y="285" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">+ 8TB HDD (datasets)</text>
+
+  <!-- OS -->
+  <rect x="50" y="320" width="410" height="40" rx="8" fill="#263238"/>
+  <text x="255" y="345" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Ubuntu 22.04 LTS | ROS 2 Humble | CUDA 12+ | Isaac Sim</text>
+
+  <!-- Network -->
+  <rect x="50" y="375" width="410" height="40" rx="8" fill="#455A64"/>
+  <text x="255" y="400" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">10GbE Network | USB 3.2 (Sensors) | WiFi 6E (Robot)</text>
+
+  <!-- Peripherals -->
+  <rect x="520" y="50" width="300" height="160" rx="12" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="670" y="80" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2E7D32" text-anchor="middle">Connected Devices</text>
+
+  <rect x="540" y="95" width="120" height="45" rx="6" fill="#C8E6C9"/>
+  <text x="600" y="115" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#1B5E20" text-anchor="middle">RealSense D455</text>
+  <text x="600" y="130" font-family="Arial, sans-serif" font-size="9" fill="#1B5E20" text-anchor="middle">USB 3.2</text>
+
+  <rect x="680" y="95" width="120" height="45" rx="6" fill="#C8E6C9"/>
+  <text x="740" y="115" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#1B5E20" text-anchor="middle">Robot (WiFi)</text>
+  <text x="740" y="130" font-family="Arial, sans-serif" font-size="9" fill="#1B5E20" text-anchor="middle">ROS 2 DDS</text>
+
+  <rect x="540" y="150" width="120" height="45" rx="6" fill="#C8E6C9"/>
+  <text x="600" y="170" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#1B5E20" text-anchor="middle">Jetson Orin</text>
+  <text x="600" y="185" font-family="Arial, sans-serif" font-size="9" fill="#1B5E20" text-anchor="middle">Ethernet</text>
+
+  <rect x="680" y="150" width="120" height="45" rx="6" fill="#C8E6C9"/>
+  <text x="740" y="170" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#1B5E20" text-anchor="middle">VR Headset</text>
+  <text x="740" y="185" font-family="Arial, sans-serif" font-size="9" fill="#1B5E20" text-anchor="middle">DisplayPort</text>
+
+  <!-- Software Stack -->
+  <rect x="520" y="230" width="300" height="190" rx="12" fill="#E3F2FD" stroke="#1976D2" stroke-width="2"/>
+  <text x="670" y="260" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0D47A1" text-anchor="middle">Software Stack</text>
+
+  <rect x="540" y="275" width="260" height="30" rx="5" fill="#BBDEFB"/>
+  <text x="670" y="295" font-family="Arial, sans-serif" font-size="11" fill="#0D47A1" text-anchor="middle">Isaac Sim + Omniverse (GPU)</text>
+
+  <rect x="540" y="315" width="260" height="30" rx="5" fill="#90CAF9"/>
+  <text x="670" y="335" font-family="Arial, sans-serif" font-size="11" fill="#0D47A1" text-anchor="middle">PyTorch / TensorFlow (GPU)</text>
+
+  <rect x="540" y="355" width="260" height="30" rx="5" fill="#64B5F6"/>
+  <text x="670" y="375" font-family="Arial, sans-serif" font-size="11" fill="#0D47A1" text-anchor="middle">ROS 2 Humble + Nav2</text>
+
+  <rect x="540" y="395" width="260" height="20" rx="5" fill="#42A5F5"/>
+  <text x="670" y="409" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Docker / Dev Containers</text>
+
+  <!-- Connection lines -->
+  <line x1="480" y1="150" x2="520" y2="120" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="480" y1="340" x2="520" y2="340" stroke="#1976D2" stroke-width="2" stroke-dasharray="5,3"/>
+</svg>

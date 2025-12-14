@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450">
+  <defs>
+    <linearGradient id="visionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E91E63;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#AD1457;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="languageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2196F3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1565C0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="stateGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9800;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E65100;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="transformerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9C27B0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6A1B9A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="actionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+    <marker id="vlaArrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">Vision-Language-Action (VLA) Model Architecture</text>
+
+  <!-- Input Modalities -->
+  <text x="160" y="70" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#666" text-anchor="middle">Input Modalities</text>
+
+  <!-- Vision Input -->
+  <rect x="30" y="90" width="160" height="100" rx="10" fill="url(#visionGrad)"/>
+  <text x="110" y="120" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Vision</text>
+  <text x="110" y="145" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">RGB Camera</text>
+  <text x="110" y="165" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">ViT / ResNet</text>
+  <text x="110" y="180" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">224×224 → 768D</text>
+
+  <!-- Language Input -->
+  <rect x="210" y="90" width="160" height="100" rx="10" fill="url(#languageGrad)"/>
+  <text x="290" y="120" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Language</text>
+  <text x="290" y="145" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Natural Language</text>
+  <text x="290" y="165" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Tokenizer + Embed</text>
+  <text x="290" y="180" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">"Pick up the cup"</text>
+
+  <!-- Robot State Input -->
+  <rect x="390" y="90" width="160" height="100" rx="10" fill="url(#stateGrad)"/>
+  <text x="470" y="120" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Robot State</text>
+  <text x="470" y="145" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Proprioception</text>
+  <text x="470" y="165" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Joint positions</text>
+  <text x="470" y="180" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">Gripper state</text>
+
+  <!-- Arrows to fusion -->
+  <line x1="110" y1="190" x2="110" y2="230" stroke="#333" stroke-width="2" marker-end="url(#vlaArrow)"/>
+  <line x1="290" y1="190" x2="290" y2="230" stroke="#333" stroke-width="2" marker-end="url(#vlaArrow)"/>
+  <line x1="470" y1="190" x2="470" y2="230" stroke="#333" stroke-width="2" marker-end="url(#vlaArrow)"/>
+
+  <!-- Multimodal Fusion -->
+  <rect x="80" y="230" width="420" height="50" rx="10" fill="#E1BEE7" stroke="#9C27B0" stroke-width="2"/>
+  <text x="290" y="260" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#4A148C" text-anchor="middle">Multimodal Token Embedding Fusion</text>
+
+  <!-- Arrow to transformer -->
+  <line x1="290" y1="280" x2="290" y2="310" stroke="#333" stroke-width="2" marker-end="url(#vlaArrow)"/>
+
+  <!-- Transformer Block -->
+  <rect x="130" y="310" width="320" height="70" rx="12" fill="url(#transformerGrad)"/>
+  <text x="290" y="340" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Transformer Decoder</text>
+  <text x="290" y="360" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Self-Attention + Cross-Attention | 7B-55B Parameters</text>
+
+  <!-- Arrow to action -->
+  <line x1="290" y1="380" x2="290" y2="410" stroke="#333" stroke-width="2" marker-end="url(#vlaArrow)"/>
+
+  <!-- Action Output -->
+  <rect x="180" y="410" width="220" height="35" rx="8" fill="url(#actionGrad)"/>
+  <text x="290" y="433" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Action Tokens → [dx, dy, dz, gripper]</text>
+
+  <!-- Right side: Model Examples -->
+  <rect x="580" y="90" width="290" height="300" rx="15" fill="#F5F5F5" stroke="#999" stroke-width="2"/>
+  <text x="725" y="120" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">VLA Model Examples</text>
+
+  <rect x="600" y="140" width="250" height="60" rx="8" fill="#FCE4EC"/>
+  <text x="725" y="165" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#C2185B" text-anchor="middle">RT-2 (Google DeepMind)</text>
+  <text x="725" y="185" font-family="Arial, sans-serif" font-size="10" fill="#C2185B" text-anchor="middle">55B params | Web + Robot data</text>
+
+  <rect x="600" y="210" width="250" height="60" rx="8" fill="#E3F2FD"/>
+  <text x="725" y="235" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1565C0" text-anchor="middle">PaLM-E (Google)</text>
+  <text x="725" y="255" font-family="Arial, sans-serif" font-size="10" fill="#1565C0" text-anchor="middle">562B params | Embodied reasoning</text>
+
+  <rect x="600" y="280" width="250" height="60" rx="8" fill="#E8F5E9"/>
+  <text x="725" y="305" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2E7D32" text-anchor="middle">OpenVLA (Open Source)</text>
+  <text x="725" y="325" font-family="Arial, sans-serif" font-size="10" fill="#2E7D32" text-anchor="middle">7B params | Accessible VLA</text>
+
+  <rect x="600" y="350" width="250" height="30" rx="6" fill="#FFF3E0"/>
+  <text x="725" y="370" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#E65100" text-anchor="middle">Key: End-to-end vision → action</text>
+</svg>

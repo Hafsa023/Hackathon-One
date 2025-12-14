@@ -1,0 +1,73 @@
+<svg width="400" height="500" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- URDF Humanoid Robot Visualization -->
+
+  <!-- Title -->
+  <text x="200" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#24292e">URDF Humanoid Structure</text>
+
+  <!-- Robot visualization -->
+  <!-- Head -->
+  <circle cx="200" cy="80" r="25" fill="#666" stroke="#333" stroke-width="2"/>
+  <text x="200" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">head</text>
+
+  <!-- Neck joint indicator -->
+  <circle cx="200" cy="110" r="5" fill="#f58113"/>
+  <text x="235" y="115" font-family="Arial, sans-serif" font-size="9" fill="#f58113">neck_joint</text>
+
+  <!-- Torso -->
+  <rect x="160" y="115" width="80" height="100" rx="8" fill="#22314e" stroke="#333" stroke-width="2"/>
+  <text x="200" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">base_link</text>
+
+  <!-- Shoulder joints -->
+  <circle cx="155" cy="130" r="5" fill="#f58113"/>
+  <circle cx="245" cy="130" r="5" fill="#f58113"/>
+
+  <!-- Arms -->
+  <rect x="110" y="135" width="40" height="60" rx="4" fill="#2e8555" stroke="#333" stroke-width="1"/>
+  <text x="130" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">l_arm</text>
+
+  <rect x="250" y="135" width="40" height="60" rx="4" fill="#2e8555" stroke="#333" stroke-width="1"/>
+  <text x="270" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">r_arm</text>
+
+  <!-- Elbow joints -->
+  <circle cx="130" cy="200" r="4" fill="#f58113"/>
+  <circle cx="270" cy="200" r="4" fill="#f58113"/>
+
+  <!-- Forearms -->
+  <rect x="115" y="205" width="30" height="50" rx="4" fill="#28a745" stroke="#333" stroke-width="1"/>
+  <rect x="255" y="205" width="30" height="50" rx="4" fill="#28a745" stroke="#333" stroke-width="1"/>
+
+  <!-- Hip joints -->
+  <circle cx="175" cy="220" r="5" fill="#f58113"/>
+  <circle cx="225" cy="220" r="5" fill="#f58113"/>
+
+  <!-- Legs -->
+  <rect x="160" y="225" width="35" height="80" rx="4" fill="#0066cc" stroke="#333" stroke-width="1"/>
+  <text x="177" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">l_leg</text>
+
+  <rect x="205" y="225" width="35" height="80" rx="4" fill="#0066cc" stroke="#333" stroke-width="1"/>
+  <text x="222" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white">r_leg</text>
+
+  <!-- Knee joints -->
+  <circle cx="177" cy="310" r="4" fill="#f58113"/>
+  <circle cx="222" cy="310" r="4" fill="#f58113"/>
+
+  <!-- Lower legs -->
+  <rect x="162" y="315" width="30" height="70" rx="4" fill="#76b900" stroke="#333" stroke-width="1"/>
+  <rect x="207" y="315" width="30" height="70" rx="4" fill="#76b900" stroke="#333" stroke-width="1"/>
+
+  <!-- Feet -->
+  <rect x="155" y="390" width="45" height="15" rx="4" fill="#666" stroke="#333" stroke-width="1"/>
+  <rect x="200" y="390" width="45" height="15" rx="4" fill="#666" stroke="#333" stroke-width="1"/>
+
+  <!-- Legend -->
+  <rect x="20" y="430" width="360" height="60" rx="4" fill="#f5f7fa" stroke="#e1e4e8"/>
+  <text x="30" y="448" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#24292e">Legend:</text>
+
+  <rect x="30" y="458" width="12" height="12" fill="#22314e"/>
+  <text x="48" y="468" font-family="Arial, sans-serif" font-size="9" fill="#666">Link (rigid body)</text>
+
+  <circle cx="136" cy="464" r="5" fill="#f58113"/>
+  <text x="148" y="468" font-family="Arial, sans-serif" font-size="9" fill="#666">Joint (connection)</text>
+
+  <text x="240" y="468" font-family="Arial, sans-serif" font-size="9" fill="#666">Colors = different links</text>
+</svg>

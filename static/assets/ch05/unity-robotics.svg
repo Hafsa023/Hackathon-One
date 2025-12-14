@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 500">
+  <defs>
+    <linearGradient id="unityGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#222C37;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ros2ConnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00BCD4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00838F;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="urdfGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9800;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E65100;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="perceptionGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9C27B0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6A1B9A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="rosGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="arrowBi" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00BCD4"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="425" y="35" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">Unity Robotics Hub Architecture</text>
+
+  <!-- Unity Editor Container -->
+  <rect x="30" y="60" width="500" height="380" rx="15" fill="#f0f0f0" stroke="#222C37" stroke-width="3"/>
+  <rect x="30" y="60" width="500" height="50" rx="15" fill="url(#unityGrad)"/>
+  <text x="280" y="92" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">Unity 2022.3 LTS</text>
+
+  <!-- Scene View -->
+  <rect x="50" y="130" width="200" height="140" rx="10" fill="white" stroke="#666" stroke-width="2"/>
+  <text x="150" y="155" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">Scene View</text>
+  <rect x="70" y="170" width="160" height="80" rx="5" fill="#E8F5E9"/>
+  <text x="150" y="200" font-family="Arial, sans-serif" font-size="11" fill="#333" text-anchor="middle">Robot GameObject</text>
+  <text x="150" y="220" font-family="Arial, sans-serif" font-size="11" fill="#333" text-anchor="middle">HDRP Environment</text>
+  <text x="150" y="240" font-family="Arial, sans-serif" font-size="11" fill="#333" text-anchor="middle">Physics Simulation</text>
+
+  <!-- ROS-TCP-Connector -->
+  <rect x="270" y="130" width="240" height="90" rx="10" fill="url(#ros2ConnGrad)"/>
+  <text x="390" y="160" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">ROS-TCP-Connector</text>
+  <text x="390" y="180" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">ROSConnection Component</text>
+  <text x="390" y="200" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Publisher/Subscriber API</text>
+
+  <!-- URDF Importer -->
+  <rect x="50" y="290" width="200" height="80" rx="10" fill="url(#urdfGrad)"/>
+  <text x="150" y="320" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">URDF Importer</text>
+  <text x="150" y="340" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">ArticulationBody Hierarchy</text>
+  <text x="150" y="355" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Mesh/Collider Import</text>
+
+  <!-- Perception Package -->
+  <rect x="270" y="240" width="240" height="130" rx="10" fill="url(#perceptionGrad)"/>
+  <text x="390" y="270" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Perception Package</text>
+  <text x="390" y="295" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">PerceptionCamera</text>
+  <text x="390" y="315" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Labelers (BBox, Semantic)</text>
+  <text x="390" y="335" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Randomizers</text>
+  <text x="390" y="355" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">Dataset Generator</text>
+
+  <!-- Output boxes -->
+  <rect x="50" y="390" width="90" height="40" rx="5" fill="#E3F2FD" stroke="#1565C0"/>
+  <text x="95" y="415" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#1565C0" text-anchor="middle">RGB Images</text>
+
+  <rect x="150" y="390" width="90" height="40" rx="5" fill="#FFF3E0" stroke="#E65100"/>
+  <text x="195" y="415" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#E65100" text-anchor="middle">Depth Maps</text>
+
+  <rect x="250" y="390" width="90" height="40" rx="5" fill="#F3E5F5" stroke="#6A1B9A"/>
+  <text x="295" y="415" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#6A1B9A" text-anchor="middle">Segmentation</text>
+
+  <rect x="350" y="390" width="90" height="40" rx="5" fill="#E8F5E9" stroke="#2E7D32"/>
+  <text x="395" y="415" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#2E7D32" text-anchor="middle">Annotations</text>
+
+  <!-- ROS 2 Side -->
+  <rect x="580" y="60" width="240" height="380" rx="15" fill="#E8F5E9" stroke="#2E7D32" stroke-width="3"/>
+  <rect x="580" y="60" width="240" height="50" rx="15" fill="url(#rosGrad)"/>
+  <text x="700" y="92" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">ROS 2 Humble</text>
+
+  <!-- ROS TCP Endpoint -->
+  <rect x="600" y="130" width="200" height="60" rx="8" fill="#C8E6C9" stroke="#2E7D32"/>
+  <text x="700" y="155" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1B5E20" text-anchor="middle">ROS-TCP-Endpoint</text>
+  <text x="700" y="175" font-family="Arial, sans-serif" font-size="10" fill="#1B5E20" text-anchor="middle">TCP Server (Port 10000)</text>
+
+  <!-- ROS Topics -->
+  <rect x="600" y="210" width="200" height="140" rx="8" fill="white" stroke="#666"/>
+  <text x="700" y="235" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">ROS 2 Topics</text>
+  <text x="700" y="260" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">/cmd_vel (Twist)</text>
+  <text x="700" y="280" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">/joint_states (JointState)</text>
+  <text x="700" y="300" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">/tf (TransformStamped)</text>
+  <text x="700" y="320" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">/camera/image (Image)</text>
+  <text x="700" y="340" font-family="Arial, sans-serif" font-size="10" fill="#333" text-anchor="middle">/scan (LaserScan)</text>
+
+  <!-- Robot/Gazebo -->
+  <rect x="600" y="370" width="200" height="60" rx="8" fill="#DCEDC8" stroke="#689F38"/>
+  <text x="700" y="395" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#33691E" text-anchor="middle">Physical Robot / Gazebo</text>
+  <text x="700" y="415" font-family="Arial, sans-serif" font-size="10" fill="#33691E" text-anchor="middle">Hardware Interface</text>
+
+  <!-- Arrows -->
+  <!-- Unity to ROS-TCP-Connector -->
+  <line x1="250" y1="200" x2="270" y2="175" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ROS-TCP-Connector to ROS side -->
+  <line x1="510" y1="175" x2="580" y2="160" stroke="#00BCD4" stroke-width="3" marker-end="url(#arrowBi)"/>
+  <line x1="580" y1="160" x2="510" y2="175" stroke="#00BCD4" stroke-width="3"/>
+
+  <!-- ROS-TCP to Topics -->
+  <line x1="700" y1="190" x2="700" y2="210" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Topics to Robot -->
+  <line x1="700" y1="350" x2="700" y2="370" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- URDF to Scene -->
+  <line x1="150" y1="290" x2="150" y2="270" stroke="#E65100" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Perception outputs -->
+  <line x1="320" y1="370" x2="320" y2="390" stroke="#6A1B9A" stroke-width="1.5"/>
+  <line x1="320" y1="380" x2="95" y2="390" stroke="#6A1B9A" stroke-width="1"/>
+  <line x1="320" y1="380" x2="195" y2="390" stroke="#6A1B9A" stroke-width="1"/>
+  <line x1="320" y1="380" x2="295" y2="390" stroke="#6A1B9A" stroke-width="1"/>
+  <line x1="320" y1="380" x2="395" y2="390" stroke="#6A1B9A" stroke-width="1"/>
+
+  <!-- TCP Label -->
+  <rect x="530" y="145" width="45" height="25" rx="4" fill="#B2EBF2"/>
+  <text x="552" y="162" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#006064" text-anchor="middle">TCP</text>
+</svg>

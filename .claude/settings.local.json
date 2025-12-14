@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "SlashCommand(/sp.specify)",
+      "Bash(git fetch:*)",
+      "Bash(ls:*)",
+      "Bash(curl:*)",
+      "Bash(source:*)",
+      "Bash(python:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
