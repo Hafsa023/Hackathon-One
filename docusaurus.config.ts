@@ -40,8 +40,8 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           routeBasePath: '/docs',
           editUrl: 'https://github.com/your-username/physical-ai-book/tree/main/',
-          showLastUpdateTime: true,
-          showLastUpdateAuthor: true,
+          showLastUpdateTime: false,
+          showLastUpdateAuthor: false,
           breadcrumbs: true,
         },
         blog: false,
@@ -181,7 +181,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Physical AI Book. Built with Docusaurus.`,
+      copyright: `Designed & Built by Hafsa`,
     },
 
     // Table of contents configuration
