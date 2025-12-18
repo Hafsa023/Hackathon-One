@@ -6,12 +6,13 @@
  */
 
 export const CHAT_CONFIG = {
-  // Backend API URL - Update this for production
+  // Backend API URL - Configured via environment variable
   // Development: http://localhost:8000
-  // Production: https://your-backend-domain.com
-  API_BASE_URL: process.env.NODE_ENV === 'development'
-    ? 'http://localhost:8000'
-    : 'https://your-backend-domain.com',
+  // Production: Set REACT_APP_API_URL in Vercel
+  API_BASE_URL: process.env.REACT_APP_API_URL ||
+    (process.env.NODE_ENV === 'development'
+      ? 'http://localhost:8000'
+      : 'https://your-backend.up.railway.app'),
 
   // Chat widget settings
   WIDGET: {
