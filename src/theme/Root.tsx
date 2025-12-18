@@ -15,7 +15,7 @@ export default function Root({ children }: RootProps): JSX.Element {
     <>
       {isDocsPage && <ReadingProgress />}
       {children}
-      {isDocsPage && <ChatWidget />}
+      <ChatWidget />
     </>
   );
 }

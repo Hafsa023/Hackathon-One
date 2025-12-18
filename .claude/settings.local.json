@@ -7,7 +7,30 @@
       "Bash(curl:*)",
       "Bash(source:*)",
       "Bash(python:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(.venvScriptsactivate)",
+      "mcp__ide__getDiagnostics",
+      "Bash(npm run build:*)",
+      "Bash(npx tsc:*)",
+      "Bash(pip install:*)",
+      "Bash(npx docusaurus:*)",
+      "Bash(npm install:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(if [ -d \"venv\" ])",
+      "Bash(then echo \"venv exists\")",
+      "Bash(else echo \"venv not found\")",
+      "Bash(fi)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(if [ -f \".env\" ])",
+      "Bash(then echo \"EXISTS\")",
+      "Bash(else echo \"NOT_FOUND\")",
+      "Bash(chmod:*)",
+      "Bash(railway whoami:*)"
     ]
   }
 }

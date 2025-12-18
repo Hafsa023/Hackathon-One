@@ -1,0 +1,9 @@
+# Railway Configuration - Backend Only
+# This tells Railway where the backend code is located
+
+[build]
+builder = "NIXPACKS"
+buildCommand = "cd backend && pip install -r requirements.txt"
+
+[deploy]
+startCommand = "cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT"

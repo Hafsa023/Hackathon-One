@@ -28,6 +28,22 @@ class Settings(BaseSettings):
     # Neon Postgres Configuration
     database_url: str
 
+    # JWT Authentication Settings
+    jwt_secret_key: str = "change-this-secret-key-in-production"
+    jwt_algorithm: str = "HS256"
+    jwt_access_token_expire_minutes: int = 1440  # 24 hours
+
+    # OAuth Provider Settings (Optional)
+    google_client_id: Optional[str] = None
+    google_client_secret: Optional[str] = None
+    github_client_id: Optional[str] = None
+    github_client_secret: Optional[str] = None
+    linkedin_client_id: Optional[str] = None
+    linkedin_client_secret: Optional[str] = None
+    twitter_client_id: Optional[str] = None
+    twitter_client_secret: Optional[str] = None
+    frontend_url: str = "http://localhost:3000"
+
     # Application Settings
     chunk_size: int = 400  # Target words per chunk
     chunk_overlap: int = 50  # Overlap words between chunks

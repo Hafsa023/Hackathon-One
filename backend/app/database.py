@@ -46,6 +46,20 @@ def is_db_enabled() -> bool:
     return _db_enabled
 
 
+class User(Base):
+    """User table for authentication."""
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(255), nullable=False)
+    email = Column(String(255), unique=True, index=True, nullable=False)
+    hashed_password = Column(String(255), nullable=True)  # Nullable for OAuth users
+    oauth_provider = Column(String(50), nullable=True)  # google, github, linkedin, twitter
+    oauth_id = Column(String(255), nullable=True)  # Provider's user ID
+    avatar_url = Column(String(500), nullable=True)  # Profile picture URL
+    created_at = Column(DateTime, default=datetime.utcnow, index=True)
+
+
 class ChatHistory(Base):
     """Chat history table for storing conversations."""
     __tablename__ = "chat_history"
