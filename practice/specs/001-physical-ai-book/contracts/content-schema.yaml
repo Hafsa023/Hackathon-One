@@ -1,0 +1,481 @@
+# Content Schema: Physical AI Complete Guide Book
+# Version: 1.0.0
+# Date: 2025-12-11
+#
+# This schema defines the structure and validation rules for book content.
+# Used for validating chapter files and generating content inventories.
+
+openapi: "3.0.3"
+info:
+  title: Physical AI Book Content Schema
+  version: "1.0.0"
+  description: |
+    Schema definitions for the Physical AI book content structure.
+    All chapter files must conform to these specifications.
+
+components:
+  schemas:
+
+    # ============================================
+    # BOOK STRUCTURE
+    # ============================================
+
+    Book:
+      type: object
+      required:
+        - title
+        - version
+        - modules
+        - chapters
+      properties:
+        title:
+          type: string
+          maxLength: 100
+          example: "Physical AI — A Complete Guide to Embodied Intelligence"
+        subtitle:
+          type: string
+          maxLength: 200
+        version:
+          type: string
+          pattern: "^\\d+\\.\\d+\\.\\d+$"
+          example: "1.0.0"
+        modules:
+          type: array
+          items:
+            $ref: "#/components/schemas/Module"
+          minItems: 4
+          maxItems: 6
+        chapters:
+          type: array
+          items:
+            $ref: "#/components/schemas/Chapter"
+          minItems: 8
+          maxItems: 12
+
+    Module:
+      type: object
+      required:
+        - id
+        - name
+        - chapters
+      properties:
+        id:
+          type: string
+          pattern: "^module-\\d{2}$"
+          example: "module-01"
+        name:
+          type: string
+          maxLength: 50
+          example: "Foundations"
+        description:
+          type: string
+          maxLength: 500
+        learning_objectives:
+          type: array
+          items:
+            type: string
+          minItems: 2
+        chapters:
+          type: array
+          items:
+            type: string
+            pattern: "^ch\\d{2}$"
+          minItems: 1
+
+    # ============================================
+    # CHAPTER STRUCTURE
+    # ============================================
+
+    Chapter:
+      type: object
+      required:
+        - id
+        - title
+        - slug
+        - order
+        - sections
+        - diagrams
+        - citations
+      properties:
+        id:
+          type: string
+          pattern: "^ch\\d{2}$"
+          example: "ch03"
+        title:
+          type: string
+          maxLength: 80
+          example: "ROS 2 Fundamentals"
+        slug:
+          type: string
+          pattern: "^[a-z0-9-]+$"
+          example: "ros2-fundamentals"
+        order:
+          type: integer
+          minimum: 1
+          maximum: 15
+        file_path:
+          type: string
+          pattern: "^docs/.*\\.mdx?$"
+          example: "docs/ros2/fundamentals.md"
+        word_count:
+          type: integer
+          minimum: 800
+          maximum: 2000
+        flesch_kincaid_grade:
+          type: number
+          minimum: 8.0
+          maximum: 12.0
+        status:
+          type: string
+          enum: [outline, draft, review, final]
+          default: outline
+        sections:
+          type: array
+          items:
+            $ref: "#/components/schemas/Section"
+          minItems: 3
+          maxItems: 10
+        code_examples:
+          type: array
+          items:
+            $ref: "#/components/schemas/CodeExample"
+        diagrams:
+          type: array
+          items:
+            $ref: "#/components/schemas/Diagram"
+          minItems: 3
+          maxItems: 7
+        citations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Citation"
+          minItems: 5
+        assessment:
+          $ref: "#/components/schemas/Assessment"
+
+    Section:
+      type: object
+      required:
+        - id
+        - title
+        - type
+        - order
+      properties:
+        id:
+          type: string
+          pattern: "^sec-[a-z0-9-]+$"
+        title:
+          type: string
+          maxLength: 60
+        type:
+          type: string
+          enum:
+            - intro
+            - theory
+            - architecture
+            - walkthrough
+            - code
+            - evaluation
+            - references
+        order:
+          type: integer
+          minimum: 1
+        content:
+          type: string
+          description: Markdown content
+
+    # ============================================
+    # CODE EXAMPLES
+    # ============================================
+
+    CodeExample:
+      type: object
+      required:
+        - id
+        - title
+        - language
+        - code
+        - validation_status
+      properties:
+        id:
+          type: string
+          pattern: "^code-[a-z0-9-]+$"
+          example: "code-ros2-publisher"
+        title:
+          type: string
+          example: "Minimal Publisher Node"
+        language:
+          type: string
+          enum: [python, cpp, yaml, bash, xml, json, markdown]
+        code:
+          type: string
+          minLength: 10
+        description:
+          type: string
+        dependencies:
+          type: array
+          items:
+            type: string
+          example: ["rclpy", "std_msgs"]
+        expected_output:
+          type: string
+        validation_status:
+          type: string
+          enum: [untested, passing, failing]
+          default: untested
+        ros_version:
+          type: string
+          example: "humble"
+        gazebo_version:
+          type: string
+          example: "fortress"
+        file_reference:
+          type: string
+          description: Path to standalone file if applicable
+
+    # ============================================
+    # DIAGRAMS
+    # ============================================
+
+    Diagram:
+      type: object
+      required:
+        - id
+        - title
+        - alt_text
+        - file_path
+        - file_format
+        - source_type
+      properties:
+        id:
+          type: string
+          pattern: "^fig-[a-z0-9-]+$"
+          example: "fig-ros2-architecture"
+        title:
+          type: string
+          example: "ROS 2 Node Communication Architecture"
+        alt_text:
+          type: string
+          minLength: 20
+          maxLength: 200
+          description: Accessibility text for screen readers
+        file_path:
+          type: string
+          pattern: "^/static/assets/ch\\d{2}/.*$"
+          example: "/static/assets/ch03/ros2-architecture.svg"
+        file_format:
+          type: string
+          enum: [svg, png, webp, gif]
+        source_type:
+          type: string
+          enum: [ai_generated, self_created, adapted]
+        source_attribution:
+          type: string
+          description: Required if source_type is 'adapted'
+        caption:
+          type: string
+          maxLength: 300
+        width:
+          type: integer
+          description: Width in pixels (optional)
+
+    # ============================================
+    # CITATIONS
+    # ============================================
+
+    Citation:
+      type: object
+      required:
+        - id
+        - type
+        - title
+        - year
+        - is_peer_reviewed
+      properties:
+        id:
+          type: string
+          pattern: "^cite-[a-z0-9-]+$"
+          example: "cite-macenski-ros2"
+        type:
+          type: string
+          enum: [journal, conference, book, documentation, website, preprint]
+        authors:
+          type: array
+          items:
+            type: string
+          example: ["Macenski, S.", "Foote, T.", "Gerkey, B."]
+        title:
+          type: string
+          example: "Robot Operating System 2: Design, Architecture, and Uses in the Wild"
+        year:
+          type: integer
+          minimum: 1990
+          maximum: 2030
+          example: 2022
+        venue:
+          type: string
+          description: Journal or conference name
+          example: "Science Robotics"
+        volume:
+          type: string
+        issue:
+          type: string
+        pages:
+          type: string
+        doi:
+          type: string
+          pattern: "^10\\..*$"
+          example: "10.1126/scirobotics.abm6074"
+        url:
+          type: string
+          format: uri
+        accessed_date:
+          type: string
+          format: date
+          description: Required if url is provided
+        is_peer_reviewed:
+          type: boolean
+        apa_formatted:
+          type: string
+          description: Complete APA 7th edition formatted citation
+
+    # ============================================
+    # ASSESSMENTS
+    # ============================================
+
+    Assessment:
+      type: object
+      required:
+        - id
+        - title
+        - type
+        - objectives
+        - success_criteria
+      properties:
+        id:
+          type: string
+          pattern: "^assess-[a-z0-9-]+$"
+        title:
+          type: string
+          example: "ROS 2 Package Development Project"
+        type:
+          type: string
+          enum: [project, exercise, quiz]
+        difficulty:
+          type: string
+          enum: [beginner, intermediate, advanced]
+        estimated_time_hours:
+          type: number
+          minimum: 0.5
+          maximum: 40
+        objectives:
+          type: array
+          items:
+            type: string
+          minItems: 2
+        deliverables:
+          type: array
+          items:
+            type: string
+          minItems: 1
+        success_criteria:
+          type: array
+          items:
+            type: string
+          minItems: 2
+        rubric:
+          type: array
+          items:
+            $ref: "#/components/schemas/RubricItem"
+
+    RubricItem:
+      type: object
+      required:
+        - criterion
+        - points
+      properties:
+        criterion:
+          type: string
+        points:
+          type: integer
+          minimum: 0
+        description:
+          type: string
+
+    # ============================================
+    # HARDWARE SPECIFICATIONS
+    # ============================================
+
+    HardwareSpec:
+      type: object
+      required:
+        - id
+        - category
+        - name
+        - specifications
+      properties:
+        id:
+          type: string
+          pattern: "^hw-[a-z0-9-]+$"
+        category:
+          type: string
+          enum: [workstation, edge, sensor, robot, accessory]
+        name:
+          type: string
+          example: "NVIDIA Jetson Orin NX"
+        specifications:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            memory: "16GB"
+            compute: "100 TOPS"
+        minimum_requirement:
+          type: boolean
+          default: false
+        alternatives:
+          type: array
+          items:
+            type: string
+            description: IDs of alternative hardware
+        estimated_cost_usd:
+          type: object
+          properties:
+            min:
+              type: number
+            max:
+              type: number
+        purchase_url:
+          type: string
+          format: uri
+
+# ============================================
+# VALIDATION RULES (as comments)
+# ============================================
+#
+# Book-level:
+#   - Total word count must be 8,000-20,000
+#   - Must have 10 chapters + appendix
+#   - All chapters must have status=final before publish
+#
+# Chapter-level:
+#   - Word count: 800-2,000
+#   - Flesch-Kincaid grade: 8.0-12.0
+#   - Diagrams: 3-7 per chapter
+#   - Citations: 5+ per chapter with at least 1 peer-reviewed
+#   - Must follow standard section order
+#
+# Code-level:
+#   - All code must pass syntax validation for its language
+#   - Dependencies must be documented
+#   - Version requirements specified for ROS/Gazebo examples
+#
+# Citation-level:
+#   - All URLs must resolve (link check)
+#   - DOIs must be valid when provided
+#   - Must follow APA 7th edition format
+#
+# Diagram-level:
+#   - Files must exist at specified paths
+#   - Alt text required for accessibility (20-200 chars)
+#   - Attribution required for adapted content

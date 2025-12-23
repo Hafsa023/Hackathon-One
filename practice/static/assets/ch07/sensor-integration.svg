@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 380">
+  <defs>
+    <linearGradient id="rsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0071C5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#003B73;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="rosGrad7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+    <marker id="rsArrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0071C5"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="425" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">Intel RealSense ROS 2 Integration</text>
+
+  <!-- RealSense Camera -->
+  <rect x="30" y="60" width="200" height="280" rx="12" fill="url(#rsGrad)"/>
+  <text x="130" y="95" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">RealSense D455</text>
+
+  <rect x="50" y="115" width="160" height="40" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="130" y="135" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">RGB Camera</text>
+  <text x="130" y="150" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">1920×1080 @ 30fps</text>
+
+  <rect x="50" y="165" width="160" height="40" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="130" y="185" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Stereo IR</text>
+  <text x="130" y="200" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">1280×720 @ 90fps</text>
+
+  <rect x="50" y="215" width="160" height="40" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="130" y="235" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Depth</text>
+  <text x="130" y="250" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">0.6-6m range</text>
+
+  <rect x="50" y="265" width="160" height="40" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="130" y="285" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">IMU</text>
+  <text x="130" y="300" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">Accel + Gyro @ 200Hz</text>
+
+  <rect x="50" y="315" width="160" height="20" rx="4" fill="rgba(255,255,255,0.15)"/>
+  <text x="130" y="329" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">USB 3.2 Gen 1</text>
+
+  <!-- ROS 2 Driver -->
+  <rect x="280" y="100" width="200" height="200" rx="12" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2"/>
+  <text x="380" y="130" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2E7D32" text-anchor="middle">realsense2_camera</text>
+  <text x="380" y="150" font-family="Arial, sans-serif" font-size="10" fill="#2E7D32" text-anchor="middle">ROS 2 Wrapper Node</text>
+
+  <rect x="300" y="170" width="160" height="25" rx="4" fill="#C8E6C9"/>
+  <text x="380" y="187" font-family="Arial, sans-serif" font-size="9" fill="#1B5E20" text-anchor="middle">librealsense2 SDK</text>
+
+  <rect x="300" y="205" width="160" height="25" rx="4" fill="#A5D6A7"/>
+  <text x="380" y="222" font-family="Arial, sans-serif" font-size="9" fill="#1B5E20" text-anchor="middle">Image Transport</text>
+
+  <rect x="300" y="240" width="160" height="25" rx="4" fill="#81C784"/>
+  <text x="380" y="257" font-family="Arial, sans-serif" font-size="9" fill="#1B5E20" text-anchor="middle">TF Publisher</text>
+
+  <rect x="300" y="275" width="160" height="15" rx="3" fill="#66BB6A"/>
+  <text x="380" y="286" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">Diagnostics</text>
+
+  <!-- ROS 2 Topics -->
+  <rect x="530" y="60" width="290" height="280" rx="12" fill="url(#rosGrad7)"/>
+  <text x="675" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Published ROS 2 Topics</text>
+
+  <rect x="550" y="110" width="250" height="35" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="675" y="130" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">/camera/color/image_raw</text>
+  <text x="675" y="142" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">sensor_msgs/Image (BGR8)</text>
+
+  <rect x="550" y="155" width="250" height="35" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="675" y="175" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">/camera/depth/image_rect_raw</text>
+  <text x="675" y="187" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">sensor_msgs/Image (16UC1)</text>
+
+  <rect x="550" y="200" width="250" height="35" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="675" y="220" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">/camera/aligned_depth_to_color</text>
+  <text x="675" y="232" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">Depth registered to RGB frame</text>
+
+  <rect x="550" y="245" width="250" height="35" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="675" y="265" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">/camera/depth/color/points</text>
+  <text x="675" y="277" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">sensor_msgs/PointCloud2</text>
+
+  <rect x="550" y="290" width="250" height="35" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="675" y="310" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">/camera/imu</text>
+  <text x="675" y="322" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">sensor_msgs/Imu (200Hz)</text>
+
+  <!-- Arrows -->
+  <line x1="230" y1="200" x2="280" y2="200" stroke="#0071C5" stroke-width="3" marker-end="url(#rsArrow)"/>
+  <line x1="480" y1="200" x2="530" y2="200" stroke="#4CAF50" stroke-width="3"/>
+
+  <!-- QoS Note -->
+  <rect x="280" y="320" width="200" height="30" rx="5" fill="#FFF3E0" stroke="#FF9800"/>
+  <text x="380" y="340" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#E65100" text-anchor="middle">QoS: Best Effort, Keep Last 10</text>
+</svg>

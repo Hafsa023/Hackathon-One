@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 400">
+  <defs>
+    <linearGradient id="physicalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#37474F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#263238;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="digitalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1976D2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D47A1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="syncGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00BCD4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00838F;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+    </marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#FF9800"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="425" y="35" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">Digital Twin Synchronization Workflow</text>
+
+  <!-- Physical Robot Side -->
+  <rect x="30" y="60" width="300" height="310" rx="15" fill="#ECEFF1" stroke="#37474F" stroke-width="3"/>
+  <rect x="30" y="60" width="300" height="45" rx="15" fill="url(#physicalGrad)"/>
+  <text x="180" y="90" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">Physical Robot</text>
+
+  <!-- Robot image placeholder -->
+  <rect x="110" y="120" width="140" height="100" rx="10" fill="white" stroke="#666" stroke-width="2"/>
+  <text x="180" y="160" font-family="Arial, sans-serif" font-size="24" fill="#666" text-anchor="middle">🤖</text>
+  <text x="180" y="200" font-family="Arial, sans-serif" font-size="11" fill="#666" text-anchor="middle">Hardware Platform</text>
+
+  <!-- Sensors box -->
+  <rect x="50" y="235" width="120" height="70" rx="8" fill="#C8E6C9" stroke="#2E7D32"/>
+  <text x="110" y="260" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1B5E20" text-anchor="middle">Sensors</text>
+  <text x="110" y="280" font-family="Arial, sans-serif" font-size="10" fill="#1B5E20" text-anchor="middle">IMU, LiDAR</text>
+  <text x="110" y="295" font-family="Arial, sans-serif" font-size="10" fill="#1B5E20" text-anchor="middle">Cameras, Encoders</text>
+
+  <!-- Actuators box -->
+  <rect x="190" y="235" width="120" height="70" rx="8" fill="#FFECB3" stroke="#FF9800"/>
+  <text x="250" y="260" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#E65100" text-anchor="middle">Actuators</text>
+  <text x="250" y="280" font-family="Arial, sans-serif" font-size="10" fill="#E65100" text-anchor="middle">Motors, Servos</text>
+  <text x="250" y="295" font-family="Arial, sans-serif" font-size="10" fill="#E65100" text-anchor="middle">Grippers</text>
+
+  <!-- ROS 2 on robot -->
+  <rect x="50" y="320" width="260" height="35" rx="6" fill="#424242"/>
+  <text x="180" y="343" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">ROS 2 (robot_hardware_interface)</text>
+
+  <!-- Unity Digital Twin Side -->
+  <rect x="520" y="60" width="300" height="310" rx="15" fill="#E3F2FD" stroke="#1976D2" stroke-width="3"/>
+  <rect x="520" y="60" width="300" height="45" rx="15" fill="url(#digitalGrad)"/>
+  <text x="670" y="90" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">Unity Digital Twin</text>
+
+  <!-- Unity scene placeholder -->
+  <rect x="600" y="120" width="140" height="100" rx="10" fill="white" stroke="#666" stroke-width="2"/>
+  <text x="670" y="160" font-family="Arial, sans-serif" font-size="24" fill="#1976D2" text-anchor="middle">🎮</text>
+  <text x="670" y="200" font-family="Arial, sans-serif" font-size="11" fill="#666" text-anchor="middle">3D Visualization</text>
+
+  <!-- Visualization box -->
+  <rect x="540" y="235" width="120" height="70" rx="8" fill="#BBDEFB" stroke="#1976D2"/>
+  <text x="600" y="260" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0D47A1" text-anchor="middle">Visualization</text>
+  <text x="600" y="280" font-family="Arial, sans-serif" font-size="10" fill="#0D47A1" text-anchor="middle">URDF Model</text>
+  <text x="600" y="295" font-family="Arial, sans-serif" font-size="10" fill="#0D47A1" text-anchor="middle">Sensor Data Display</text>
+
+  <!-- Control box -->
+  <rect x="680" y="235" width="120" height="70" rx="8" fill="#F3E5F5" stroke="#7B1FA2"/>
+  <text x="740" y="260" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#4A148C" text-anchor="middle">Control</text>
+  <text x="740" y="280" font-family="Arial, sans-serif" font-size="10" fill="#4A148C" text-anchor="middle">UI Commands</text>
+  <text x="740" y="295" font-family="Arial, sans-serif" font-size="10" fill="#4A148C" text-anchor="middle">Simulation Override</text>
+
+  <!-- Unity ROSConnection -->
+  <rect x="540" y="320" width="260" height="35" rx="6" fill="#222C37"/>
+  <text x="670" y="343" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">ROSConnection (TCP Client)</text>
+
+  <!-- Synchronization Channel -->
+  <rect x="360" y="130" width="130" height="200" rx="10" fill="url(#syncGrad)"/>
+  <text x="425" y="160" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Sync Channel</text>
+
+  <!-- Data flows -->
+  <rect x="375" y="175" width="100" height="30" rx="5" fill="#A5D6A7"/>
+  <text x="425" y="195" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#1B5E20" text-anchor="middle">/tf, /joint_states</text>
+
+  <rect x="375" y="215" width="100" height="30" rx="5" fill="#A5D6A7"/>
+  <text x="425" y="235" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#1B5E20" text-anchor="middle">/scan, /image</text>
+
+  <rect x="375" y="265" width="100" height="30" rx="5" fill="#FFCC80"/>
+  <text x="425" y="285" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#E65100" text-anchor="middle">/cmd_vel</text>
+
+  <!-- Arrows - Sensor data to Unity -->
+  <line x1="310" y1="270" x2="360" y2="200" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrowGreen)"/>
+  <line x1="475" y1="200" x2="520" y2="270" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrowGreen)"/>
+
+  <!-- Arrows - Commands to Robot -->
+  <line x1="520" y1="280" x2="475" y2="280" stroke="#FF9800" stroke-width="3" marker-end="url(#arrowOrange)"/>
+  <line x1="375" y1="280" x2="310" y2="280" stroke="#FF9800" stroke-width="3" marker-end="url(#arrowOrange)"/>
+
+  <!-- Legend -->
+  <rect x="350" y="355" width="150" height="35" rx="5" fill="white" stroke="#999"/>
+  <line x1="365" y1="370" x2="395" y2="370" stroke="#4CAF50" stroke-width="3"/>
+  <text x="405" y="374" font-family="Arial, sans-serif" font-size="10" fill="#333">State Data</text>
+  <line x1="435" y1="370" x2="465" y2="370" stroke="#FF9800" stroke-width="3"/>
+  <text x="475" y="374" font-family="Arial, sans-serif" font-size="10" fill="#333">Commands</text>
+
+  <!-- Latency indicator -->
+  <text x="425" y="315" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">~10-50ms latency</text>
+</svg>

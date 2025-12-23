@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="commandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3F51B5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#283593;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="llmGrad9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9C27B0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6A1B9A;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="planGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9800;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E65100;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="executeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+    <marker id="llmArrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">LLM Task Planner → ROS 2 Action Execution</text>
+
+  <!-- Input Command -->
+  <rect x="30" y="60" width="180" height="120" rx="12" fill="url(#commandGrad)"/>
+  <text x="120" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Voice Command</text>
+  <rect x="45" y="105" width="150" height="60" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="120" y="130" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">"Go to the kitchen</text>
+  <text x="120" y="145" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">and get me a cup"</text>
+
+  <!-- Arrow -->
+  <line x1="210" y1="120" x2="250" y2="120" stroke="#333" stroke-width="3" marker-end="url(#llmArrow)"/>
+
+  <!-- LLM Planner -->
+  <rect x="250" y="60" width="200" height="280" rx="12" fill="url(#llmGrad9)"/>
+  <text x="350" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">LLM Task Planner</text>
+  <text x="350" y="110" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">(GPT-4 / Claude)</text>
+
+  <rect x="265" y="125" width="170" height="55" rx="6" fill="rgba(255,255,255,0.15)"/>
+  <text x="350" y="145" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">Context:</text>
+  <text x="350" y="160" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">- Available actions</text>
+  <text x="350" y="172" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">- Known locations</text>
+
+  <rect x="265" y="190" width="170" height="140" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="350" y="210" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">Generated Plan:</text>
+  <text x="275" y="230" font-family="monospace" font-size="8" fill="white">1. navigate_to(kitchen)</text>
+  <text x="275" y="245" font-family="monospace" font-size="8" fill="white">2. locate_object(cup)</text>
+  <text x="275" y="260" font-family="monospace" font-size="8" fill="white">3. pick_object(cup)</text>
+  <text x="275" y="275" font-family="monospace" font-size="8" fill="white">4. navigate_to(user)</text>
+  <text x="275" y="290" font-family="monospace" font-size="8" fill="white">5. handover(cup)</text>
+  <text x="275" y="305" font-family="monospace" font-size="8" fill="white">6. say("Here you go")</text>
+
+  <!-- Arrow -->
+  <line x1="450" y1="200" x2="490" y2="200" stroke="#333" stroke-width="3" marker-end="url(#llmArrow)"/>
+
+  <!-- Action Executor -->
+  <rect x="490" y="60" width="180" height="280" rx="12" fill="url(#planGrad)"/>
+  <text x="580" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Action Executor</text>
+
+  <rect x="505" y="110" width="150" height="35" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <text x="580" y="132" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Parse JSON plan</text>
+
+  <rect x="505" y="155" width="150" height="35" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <text x="580" y="177" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Validate actions</text>
+
+  <rect x="505" y="200" width="150" height="35" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <text x="580" y="222" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Execute sequentially</text>
+
+  <rect x="505" y="245" width="150" height="35" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <text x="580" y="267" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Handle errors</text>
+
+  <rect x="505" y="290" width="150" height="35" rx="5" fill="rgba(255,255,255,0.15)"/>
+  <text x="580" y="312" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">Report status</text>
+
+  <!-- Arrow -->
+  <line x1="670" y1="200" x2="710" y2="200" stroke="#333" stroke-width="3" marker-end="url(#llmArrow)"/>
+
+  <!-- ROS 2 Actions -->
+  <rect x="710" y="60" width="160" height="280" rx="12" fill="url(#executeGrad)"/>
+  <text x="790" y="90" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">ROS 2 Actions</text>
+
+  <rect x="725" y="110" width="130" height="40" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <text x="790" y="130" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">NavigateToPose</text>
+  <text x="790" y="143" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">nav2_msgs/action</text>
+
+  <rect x="725" y="160" width="130" height="40" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <text x="790" y="180" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">PickObject</text>
+  <text x="790" y="193" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">manipulation/action</text>
+
+  <rect x="725" y="210" width="130" height="40" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <text x="790" y="230" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">PlaceObject</text>
+  <text x="790" y="243" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">manipulation/action</text>
+
+  <rect x="725" y="260" width="130" height="40" rx="5" fill="rgba(255,255,255,0.2)"/>
+  <text x="790" y="280" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="white" text-anchor="middle">Speak</text>
+  <text x="790" y="293" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">tts_msgs/action</text>
+
+  <rect x="725" y="310" width="130" height="25" rx="5" fill="rgba(255,255,255,0.15)"/>
+  <text x="790" y="327" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">Feedback → User</text>
+
+  <!-- Bottom: Flow summary -->
+  <rect x="30" y="355" width="840" height="35" rx="6" fill="#F3E5F5" stroke="#9C27B0"/>
+  <text x="450" y="378" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#6A1B9A" text-anchor="middle">Natural Language → LLM Plan (JSON) → ROS 2 Action Clients → Robot Hardware</text>
+</svg>

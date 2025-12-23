@@ -1,0 +1,39 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2dd4bf"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer circle (embodiment) -->
+  <circle cx="100" cy="100" r="90" stroke="url(#gradient-dark)" stroke-width="4" fill="none"/>
+
+  <!-- Inner gear (robotics) -->
+  <path d="M100 40 L108 55 L125 55 L130 65 L125 75 L108 75 L100 90 L92 75 L75 75 L70 65 L75 55 L92 55 Z"
+        fill="url(#gradient-dark)" opacity="0.3"/>
+
+  <!-- Robot head -->
+  <rect x="65" y="70" width="70" height="60" rx="10" fill="url(#gradient-dark)"/>
+
+  <!-- Robot eyes -->
+  <circle cx="82" cy="95" r="8" fill="#0f172a"/>
+  <circle cx="118" cy="95" r="8" fill="#0f172a"/>
+  <circle cx="82" cy="95" r="4" fill="#2dd4bf"/>
+  <circle cx="118" cy="95" r="4" fill="#2dd4bf"/>
+
+  <!-- Robot antenna -->
+  <line x1="100" y1="70" x2="100" y2="50" stroke="url(#gradient-dark)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="100" cy="45" r="6" fill="url(#gradient-dark)"/>
+
+  <!-- Neural network lines -->
+  <path d="M40 140 Q70 130 100 145 Q130 160 160 140"
+        stroke="url(#gradient-dark)" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M50 155 Q80 145 100 160 Q120 175 150 155"
+        stroke="url(#gradient-dark)" stroke-width="2" fill="none" opacity="0.3"/>
+
+  <!-- Connection dots -->
+  <circle cx="40" cy="140" r="4" fill="url(#gradient-dark)" opacity="0.7"/>
+  <circle cx="100" cy="145" r="4" fill="url(#gradient-dark)" opacity="0.7"/>
+  <circle cx="160" cy="140" r="4" fill="url(#gradient-dark)" opacity="0.7"/>
+</svg>

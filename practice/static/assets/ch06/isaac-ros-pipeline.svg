@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <defs>
+    <linearGradient id="inputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5C6BC0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3949AB;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gpuGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#76B900;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A7C00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="outputGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00BCD4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00838F;stop-opacity:1" />
+    </linearGradient>
+    <marker id="pipeArrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">Isaac ROS GPU-Accelerated Perception Pipeline</text>
+
+  <!-- Stage labels -->
+  <text x="100" y="70" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">INPUT</text>
+  <text x="350" y="70" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">GPU PROCESSING</text>
+  <text x="650" y="70" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">GPU INFERENCE</text>
+  <text x="830" y="70" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">OUTPUT</text>
+
+  <!-- Input sensors -->
+  <rect x="30" y="90" width="140" height="60" rx="8" fill="url(#inputGrad)"/>
+  <text x="100" y="115" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">RGB Camera</text>
+  <text x="100" y="135" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">1920x1080 @ 30fps</text>
+
+  <rect x="30" y="165" width="140" height="60" rx="8" fill="url(#inputGrad)"/>
+  <text x="100" y="190" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Depth Camera</text>
+  <text x="100" y="210" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">640x480 @ 30fps</text>
+
+  <rect x="30" y="240" width="140" height="60" rx="8" fill="url(#inputGrad)"/>
+  <text x="100" y="265" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Stereo Cameras</text>
+  <text x="100" y="285" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">1280x720 x2</text>
+
+  <rect x="30" y="315" width="140" height="50" rx="8" fill="url(#inputGrad)"/>
+  <text x="100" y="340" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">IMU</text>
+  <text x="100" y="355" font-family="Arial, sans-serif" font-size="10" fill="white" text-anchor="middle">200Hz</text>
+
+  <!-- Arrows to GPU processing -->
+  <line x1="170" y1="120" x2="210" y2="120" stroke="#666" stroke-width="2" marker-end="url(#pipeArrow)"/>
+  <line x1="170" y1="195" x2="210" y2="195" stroke="#666" stroke-width="2" marker-end="url(#pipeArrow)"/>
+  <line x1="170" y1="270" x2="210" y2="270" stroke="#666" stroke-width="2" marker-end="url(#pipeArrow)"/>
+  <line x1="170" y1="340" x2="210" y2="315" stroke="#666" stroke-width="2" marker-end="url(#pipeArrow)"/>
+
+  <!-- GPU Processing Stage -->
+  <rect x="210" y="90" width="280" height="250" rx="12" fill="url(#gpuGrad)"/>
+  <text x="350" y="115" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">CUDA Processing</text>
+
+  <rect x="230" y="130" width="110" height="55" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="285" y="155" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Rectification</text>
+  <text x="285" y="175" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">NPP Library</text>
+
+  <rect x="360" y="130" width="110" height="55" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="415" y="155" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Resize/Color</text>
+  <text x="415" y="175" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">VPI Pipeline</text>
+
+  <rect x="230" y="200" width="110" height="55" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="285" y="225" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">cuVSLAM</text>
+  <text x="285" y="245" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">Visual Odometry</text>
+
+  <rect x="360" y="200" width="110" height="55" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="415" y="225" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Bi3D Stereo</text>
+  <text x="415" y="245" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">Depth Estimation</text>
+
+  <rect x="230" y="270" width="240" height="55" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="350" y="295" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Nvblox</text>
+  <text x="350" y="315" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">3D Reconstruction (ESDF/TSDF)</text>
+
+  <!-- Arrows to inference -->
+  <line x1="490" y1="160" x2="530" y2="140" stroke="#666" stroke-width="2" marker-end="url(#pipeArrow)"/>
+  <line x1="490" y1="230" x2="530" y2="220" stroke="#666" stroke-width="2" marker-end="url(#pipeArrow)"/>
+  <line x1="490" y1="300" x2="530" y2="300" stroke="#666" stroke-width="2" marker-end="url(#pipeArrow)"/>
+
+  <!-- GPU Inference Stage -->
+  <rect x="530" y="90" width="240" height="250" rx="12" fill="#FF6F00"/>
+  <text x="650" y="115" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">TensorRT Inference</text>
+
+  <rect x="550" y="130" width="200" height="45" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="650" y="150" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">AprilTag Detection</text>
+  <text x="650" y="167" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">50x faster than CPU</text>
+
+  <rect x="550" y="185" width="200" height="45" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="650" y="205" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Object Detection</text>
+  <text x="650" y="222" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">YOLO/SSD @ 60fps</text>
+
+  <rect x="550" y="240" width="200" height="45" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="650" y="260" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Semantic Segmentation</text>
+  <text x="650" y="277" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">PeopleSemSegNet</text>
+
+  <rect x="550" y="295" width="200" height="35" rx="6" fill="rgba(255,255,255,0.2)"/>
+  <text x="650" y="318" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" text-anchor="middle">Pose Estimation</text>
+
+  <!-- Arrows to output -->
+  <line x1="770" y1="150" x2="790" y2="130" stroke="#666" stroke-width="2" marker-end="url(#pipeArrow)"/>
+  <line x1="770" y1="210" x2="790" y2="190" stroke="#666" stroke-width="2" marker-end="url(#pipeArrow)"/>
+  <line x1="770" y1="265" x2="790" y2="250" stroke="#666" stroke-width="2" marker-end="url(#pipeArrow)"/>
+  <line x1="770" y1="315" x2="790" y2="315" stroke="#666" stroke-width="2" marker-end="url(#pipeArrow)"/>
+
+  <!-- Output topics -->
+  <rect x="790" y="90" width="100" height="40" rx="6" fill="url(#outputGrad)"/>
+  <text x="840" y="110" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">/odom</text>
+  <text x="840" y="123" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">Odometry</text>
+
+  <rect x="790" y="140" width="100" height="40" rx="6" fill="url(#outputGrad)"/>
+  <text x="840" y="160" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">/detections</text>
+  <text x="840" y="173" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">BBox + Class</text>
+
+  <rect x="790" y="190" width="100" height="40" rx="6" fill="url(#outputGrad)"/>
+  <text x="840" y="210" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">/semantic</text>
+  <text x="840" y="223" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">Pixel Labels</text>
+
+  <rect x="790" y="240" width="100" height="40" rx="6" fill="url(#outputGrad)"/>
+  <text x="840" y="260" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">/nvblox</text>
+  <text x="840" y="273" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">3D Map</text>
+
+  <rect x="790" y="290" width="100" height="40" rx="6" fill="url(#outputGrad)"/>
+  <text x="840" y="310" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">/costmap</text>
+  <text x="840" y="323" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle">Nav2 Layer</text>
+
+  <!-- Performance badge -->
+  <rect x="30" y="370" width="860" height="25" rx="5" fill="#E8F5E9"/>
+  <text x="450" y="388" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2E7D32" text-anchor="middle">Performance: 10-100x faster than CPU | End-to-end latency: &lt;50ms | Throughput: 30+ fps on RTX 3070</text>
+</svg>

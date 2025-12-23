@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="gazeboGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D84315;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ros2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22A7F0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1565C0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bridgeBoxGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#26A69A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00796B;stop-opacity:1" />
+    </linearGradient>
+    <marker id="arrowRight" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+    </marker>
+    <marker id="arrowLeft" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="10 0, 0 3.5, 10 7" fill="#FF5722"/>
+    </marker>
+    <marker id="arrowBlack" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="35" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">ros_gz Bridge Architecture</text>
+
+  <!-- Gazebo Side -->
+  <rect x="30" y="60" width="250" height="420" rx="15" fill="#FFF3E0" stroke="#FF6B35" stroke-width="3"/>
+  <rect x="30" y="60" width="250" height="50" rx="15" fill="url(#gazeboGrad)"/>
+  <text x="155" y="92" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">Gazebo Fortress</text>
+
+  <!-- ROS 2 Side -->
+  <rect x="520" y="60" width="250" height="420" rx="15" fill="#E3F2FD" stroke="#1565C0" stroke-width="3"/>
+  <rect x="520" y="60" width="250" height="50" rx="15" fill="url(#ros2Grad)"/>
+  <text x="645" y="92" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" text-anchor="middle">ROS 2 Humble</text>
+
+  <!-- Bridge in Center -->
+  <rect x="310" y="130" width="180" height="300" rx="12" fill="url(#bridgeBoxGrad)"/>
+  <text x="400" y="160" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">ros_gz_bridge</text>
+  <text x="400" y="180" font-family="Arial, sans-serif" font-size="11" fill="white" text-anchor="middle">parameter_bridge</text>
+
+  <!-- GZ Topics -->
+  <rect x="50" y="130" width="200" height="40" rx="6" fill="#FFCCBC"/>
+  <text x="150" y="155" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#BF360C" text-anchor="middle">/lidar (gz.msgs.LaserScan)</text>
+
+  <rect x="50" y="185" width="200" height="40" rx="6" fill="#FFCCBC"/>
+  <text x="150" y="210" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#BF360C" text-anchor="middle">/imu (gz.msgs.IMU)</text>
+
+  <rect x="50" y="240" width="200" height="40" rx="6" fill="#FFCCBC"/>
+  <text x="150" y="265" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#BF360C" text-anchor="middle">/depth_camera (gz.msgs.Image)</text>
+
+  <rect x="50" y="295" width="200" height="40" rx="6" fill="#C8E6C9"/>
+  <text x="150" y="320" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1B5E20" text-anchor="middle">/cmd_vel (gz.msgs.Twist)</text>
+
+  <rect x="50" y="350" width="200" height="40" rx="6" fill="#C8E6C9"/>
+  <text x="150" y="375" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1B5E20" text-anchor="middle">/joint_cmd (gz.msgs.Double)</text>
+
+  <!-- ROS Topics -->
+  <rect x="550" y="130" width="200" height="40" rx="6" fill="#BBDEFB"/>
+  <text x="650" y="155" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0D47A1" text-anchor="middle">/scan (sensor_msgs/LaserScan)</text>
+
+  <rect x="550" y="185" width="200" height="40" rx="6" fill="#BBDEFB"/>
+  <text x="650" y="210" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0D47A1" text-anchor="middle">/imu/data (sensor_msgs/Imu)</text>
+
+  <rect x="550" y="240" width="200" height="40" rx="6" fill="#BBDEFB"/>
+  <text x="650" y="265" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0D47A1" text-anchor="middle">/depth (sensor_msgs/Image)</text>
+
+  <rect x="550" y="295" width="200" height="40" rx="6" fill="#FFECB3"/>
+  <text x="650" y="320" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#FF6F00" text-anchor="middle">/cmd_vel (geometry_msgs/Twist)</text>
+
+  <rect x="550" y="350" width="200" height="40" rx="6" fill="#FFECB3"/>
+  <text x="650" y="375" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#FF6F00" text-anchor="middle">/joint_cmd (std_msgs/Float64)</text>
+
+  <!-- Direction labels in bridge -->
+  <rect x="330" y="200" width="140" height="25" rx="4" fill="#A5D6A7"/>
+  <text x="400" y="217" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#1B5E20" text-anchor="middle">GZ_TO_ROS</text>
+
+  <rect x="330" y="280" width="140" height="25" rx="4" fill="#FFAB91"/>
+  <text x="400" y="297" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#BF360C" text-anchor="middle">ROS_TO_GZ</text>
+
+  <rect x="330" y="340" width="140" height="25" rx="4" fill="#B39DDB"/>
+  <text x="400" y="357" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#4527A0" text-anchor="middle">BIDIRECTIONAL</text>
+
+  <!-- Arrows GZ to ROS -->
+  <line x1="250" y1="150" x2="310" y2="150" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowRight)"/>
+  <line x1="490" y1="150" x2="550" y2="150" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowRight)"/>
+
+  <line x1="250" y1="205" x2="310" y2="205" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowRight)"/>
+  <line x1="490" y1="205" x2="550" y2="205" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowRight)"/>
+
+  <line x1="250" y1="260" x2="310" y2="260" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowRight)"/>
+  <line x1="490" y1="260" x2="550" y2="260" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowRight)"/>
+
+  <!-- Arrows ROS to GZ -->
+  <line x1="550" y1="315" x2="490" y2="315" stroke="#FF5722" stroke-width="2" marker-end="url(#arrowLeft)"/>
+  <line x1="310" y1="315" x2="250" y2="315" stroke="#FF5722" stroke-width="2" marker-end="url(#arrowLeft)"/>
+
+  <line x1="550" y1="370" x2="490" y2="370" stroke="#FF5722" stroke-width="2" marker-end="url(#arrowLeft)"/>
+  <line x1="310" y1="370" x2="250" y2="370" stroke="#FF5722" stroke-width="2" marker-end="url(#arrowLeft)"/>
+
+  <!-- Transport labels -->
+  <rect x="50" y="420" width="200" height="40" rx="6" fill="#E0E0E0" stroke="#666"/>
+  <text x="150" y="445" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">ign-transport (ZMQ)</text>
+
+  <rect x="550" y="420" width="200" height="40" rx="6" fill="#E0E0E0" stroke="#666"/>
+  <text x="650" y="445" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">DDS (Fast-DDS/Cyclone)</text>
+
+  <!-- Legend -->
+  <rect x="320" y="445" width="160" height="30" rx="5" fill="#F5F5F5" stroke="#999"/>
+  <line x1="335" y1="460" x2="365" y2="460" stroke="#4CAF50" stroke-width="3"/>
+  <text x="375" y="464" font-family="Arial, sans-serif" font-size="10" fill="#333">Sensor Data</text>
+  <line x1="420" y1="460" x2="450" y2="460" stroke="#FF5722" stroke-width="3"/>
+  <text x="460" y="464" font-family="Arial, sans-serif" font-size="10" fill="#333">Commands</text>
+</svg>

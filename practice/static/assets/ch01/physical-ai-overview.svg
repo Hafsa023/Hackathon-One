@@ -1,0 +1,45 @@
+<svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Physical AI Convergence Diagram -->
+
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#24292e">Physical AI: The Convergence</text>
+
+  <!-- Central circle - Physical AI -->
+  <circle cx="300" cy="200" r="60" fill="#2e8555" opacity="0.9"/>
+  <text x="300" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">Physical</text>
+  <text x="300" y="212" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">AI</text>
+
+  <!-- Robotics circle -->
+  <circle cx="180" cy="120" r="50" fill="#22314e" opacity="0.8"/>
+  <text x="180" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Robotics</text>
+  <text x="180" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">(The Body)</text>
+
+  <!-- Simulation circle -->
+  <circle cx="420" cy="120" r="50" fill="#f58113" opacity="0.8"/>
+  <text x="420" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">Simulation</text>
+  <text x="420" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">(Training Ground)</text>
+
+  <!-- AI/ML circle -->
+  <circle cx="300" cy="320" r="50" fill="#76b900" opacity="0.8"/>
+  <text x="300" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white">AI/ML</text>
+  <text x="300" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">(The Mind)</text>
+
+  <!-- Connection lines -->
+  <line x1="220" y1="155" x2="255" y2="175" stroke="#666" stroke-width="2"/>
+  <line x1="380" y1="155" x2="345" y2="175" stroke="#666" stroke-width="2"/>
+  <line x1="300" y1="260" x2="300" y2="270" stroke="#666" stroke-width="2"/>
+
+  <!-- Component labels -->
+  <text x="100" y="180" font-family="Arial, sans-serif" font-size="10" fill="#666">• ROS 2</text>
+  <text x="100" y="195" font-family="Arial, sans-serif" font-size="10" fill="#666">• Sensors</text>
+  <text x="100" y="210" font-family="Arial, sans-serif" font-size="10" fill="#666">• Actuators</text>
+
+  <text x="450" y="180" font-family="Arial, sans-serif" font-size="10" fill="#666">• Gazebo</text>
+  <text x="450" y="195" font-family="Arial, sans-serif" font-size="10" fill="#666">• Unity</text>
+  <text x="450" y="210" font-family="Arial, sans-serif" font-size="10" fill="#666">• Isaac Sim</text>
+
+  <text x="370" y="370" font-family="Arial, sans-serif" font-size="10" fill="#666">• Perception</text>
+  <text x="370" y="385" font-family="Arial, sans-serif" font-size="10" fill="#666">• Planning</text>
+  <text x="200" y="370" font-family="Arial, sans-serif" font-size="10" fill="#666">• VLA Models</text>
+  <text x="200" y="385" font-family="Arial, sans-serif" font-size="10" fill="#666">• SLAM</text>
+</svg>
