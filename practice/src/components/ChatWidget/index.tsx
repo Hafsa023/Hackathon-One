@@ -35,8 +35,8 @@ interface ChatResponse {
   timestamp: string;
 }
 
-// Configuration - Update this to your backend URL
-const API_BASE_URL = 'http://localhost:8000';
+// Configuration - Backend URL (Railway deployed)
+const API_BASE_URL = 'https://brilliant-alignment-production-75b3.up.railway.app';
 
 // Common questions organized by category
 const COMMON_QUESTIONS = {
