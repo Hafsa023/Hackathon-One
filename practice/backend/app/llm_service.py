@@ -1,12 +1,9 @@
 """
-LLM service for Qwen via OpenRouter.
-Uses Qdrant's built-in FastEmbed for embeddings (server-side).
+LLM service for Claude via TryBons/Bonsai proxy.
 """
 
 from openai import OpenAI
-from typing import List, Optional, Generator
-import hashlib
-import requests
+from typing import Optional, Generator
 
 from .config import get_settings
 
@@ -14,16 +11,15 @@ settings = get_settings()
 
 
 class LLMService:
-    """Service for Qwen chat. Embeddings handled by Qdrant directly."""
+    """Service for Claude chat via TryBons/Bonsai."""
 
     def __init__(self):
-        # OpenRouter client for Qwen chat
         self.client = OpenAI(
-            api_key=settings.qwen_api_key,
-            base_url=settings.qwen_base_url,
+            api_key=settings.trybons_api_key,
+            base_url=settings.trybons_base_url,
         )
-        self.chat_model = settings.qwen_chat_model
-        print("LLM service initialized (Qwen via OpenRouter)")
+        self.chat_model = settings.trybons_chat_model
+        print(f"LLM service initialized (Claude via TryBons: {self.chat_model})")
 
     def generate_answer(
         self,
@@ -32,7 +28,7 @@ class LLMService:
         selected_text: Optional[str] = None,
     ) -> str:
         """
-        Generate an answer using retrieved context via Qwen.
+        Generate an answer using retrieved context via Claude.
 
         Args:
             question: User's question
@@ -42,10 +38,7 @@ class LLMService:
         Returns:
             Generated answer string
         """
-        # Build the system prompt
         system_prompt = self._build_system_prompt()
-
-        # Build the user message with context
         user_message = self._build_user_message(question, context, selected_text)
 
         response = self.client.chat.completions.create(
@@ -54,12 +47,8 @@ class LLMService:
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_message},
             ],
-            temperature=0.3,  # Lower temperature for factual responses
+            temperature=0.3,
             max_tokens=1000,
-            extra_headers={
-                "HTTP-Referer": "https://physical-ai-book.com",
-                "X-Title": "Physical AI Book Chatbot",
-            },
         )
 
         return response.choices[0].message.content
@@ -71,7 +60,7 @@ class LLMService:
         selected_text: Optional[str] = None,
     ) -> Generator[str, None, None]:
         """
-        Generate an answer using retrieved context via Qwen with streaming.
+        Generate an answer using retrieved context via Claude with streaming.
 
         Args:
             question: User's question
@@ -81,10 +70,7 @@ class LLMService:
         Yields:
             Chunks of the generated answer
         """
-        # Build the system prompt
         system_prompt = self._build_system_prompt()
-
-        # Build the user message with context
         user_message = self._build_user_message(question, context, selected_text)
 
         response = self.client.chat.completions.create(
@@ -96,10 +82,6 @@ class LLMService:
             temperature=0.3,
             max_tokens=1000,
             stream=True,
-            extra_headers={
-                "HTTP-Referer": "https://physical-ai-book.com",
-                "X-Title": "Physical AI Book Chatbot",
-            },
         )
 
         for chunk in response:

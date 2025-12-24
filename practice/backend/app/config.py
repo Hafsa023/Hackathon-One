@@ -11,22 +11,22 @@ from typing import Optional
 class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
-    # Qwen/OpenRouter Configuration
-    qwen_api_key: str
-    qwen_base_url: str = "https://openrouter.ai/api/v1"
-    qwen_embedding_model: str = "qwen/qwen-turbo"  # For embeddings fallback
-    qwen_chat_model: str = "qwen/qwen-2.5-72b-instruct"  # Main chat model
+    # TryBons/Bonsai Configuration (for LLM chat with Claude)
+    trybons_api_key: str
+    trybons_base_url: str = "https://go.trybons.ai/v1"
+    trybons_chat_model: str = "claude-sonnet-4-20250514"
 
-    # Google API Configuration (for embeddings)
-    google_api_key: Optional[str] = None
+    # Cohere Configuration (for embeddings)
+    cohere_api_key: str
+    cohere_embedding_model: str = "embed-english-v3.0"
 
     # Qdrant Configuration
     qdrant_url: str
     qdrant_api_key: str
     qdrant_collection_name: str = "book_chatbot"
 
-    # Neon Postgres Configuration
-    database_url: str
+    # Neon Postgres Configuration (Optional - chatbot works without it)
+    database_url: Optional[str] = None
 
     # JWT Authentication Settings
     jwt_secret_key: str = "change-this-secret-key-in-production"

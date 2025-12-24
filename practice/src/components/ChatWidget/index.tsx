@@ -6,6 +6,7 @@
  * - Text input for questions
  * - Selected text mode for context-specific questions
  * - Chat history display
+ * - Side panel with common questions always accessible
  * - Responsive design for mobile and desktop
  */
 
@@ -35,8 +36,41 @@ interface ChatResponse {
 }
 
 // Configuration - Update this to your backend URL
-// Note: In Docusaurus, use docusaurus.config.js customFields for production
 const API_BASE_URL = 'http://localhost:8000';
+
+// Common questions organized by category
+const COMMON_QUESTIONS = {
+  'Foundations': [
+    'What is embodied intelligence?',
+    'Explain the sensorimotor loop',
+    'What is the embodiment hypothesis?',
+    'How does physical AI differ from traditional AI?',
+  ],
+  'ROS 2 & Robotics': [
+    'How do I set up ROS 2?',
+    'What are ROS 2 nodes and topics?',
+    'Explain ROS 2 publishers and subscribers',
+    'What is a ROS 2 launch file?',
+  ],
+  'Simulation': [
+    'What simulation tools are covered in the book?',
+    'How do I use Gazebo for robotics?',
+    'What is NVIDIA Isaac Sim?',
+    'How does Unity work for robotics simulation?',
+  ],
+  'Sim-to-Real': [
+    'What is sim-to-real transfer?',
+    'How do I measure the reality gap?',
+    'What is domain randomization?',
+    'How do I deploy from simulation to hardware?',
+  ],
+  'Advanced Topics': [
+    'What are Vision-Language-Action models?',
+    'How do I build an autonomous humanoid?',
+    'What hardware tools do I need?',
+    'Explain transfer learning for robotics',
+  ],
+};
 
 // Generate unique ID
 const generateId = (): string => {
@@ -91,6 +125,8 @@ export default function ChatWidget(): JSX.Element {
   const [selectedText, setSelectedText] = useState<string | null>(null);
   const [sessionId, setSessionId] = useLocalStorage<string>('chat_session_id', generateId());
   const [error, setError] = useState<string | null>(null);
+  const [isQuestionsOpen, setIsQuestionsOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   // Refs
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -137,6 +173,9 @@ export default function ChatWidget(): JSX.Element {
   const sendMessage = async (question: string, useSelectedText: boolean = false) => {
     if (!question.trim()) return;
 
+    // Close questions panel when sending a message
+    setIsQuestionsOpen(false);
+    setActiveCategory(null);
     setError(null);
     setIsLoading(true);
 
@@ -292,6 +331,24 @@ export default function ChatWidget(): JSX.Element {
     setSelectedText(null);
   };
 
+  // Toggle questions panel
+  const toggleQuestionsPanel = () => {
+    setIsQuestionsOpen(!isQuestionsOpen);
+    if (isQuestionsOpen) {
+      setActiveCategory(null);
+    }
+  };
+
+  // Handle category click
+  const handleCategoryClick = (category: string) => {
+    setActiveCategory(activeCategory === category ? null : category);
+  };
+
+  // Handle question click from sidebar
+  const handleQuestionClick = (question: string) => {
+    sendMessage(question, false);
+  };
+
   return (
     <div className={styles.chatWidgetContainer}>
       {/* Chat Toggle Button - Robot Icon */}
@@ -329,42 +386,255 @@ export default function ChatWidget(): JSX.Element {
 
       {/* Chat Panel */}
       {isOpen && (
-        <div className={styles.chatPanel}>
-          {/* Header */}
-          <div className={styles.chatHeader}>
-            <div className={styles.headerTitle}>
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Circuit/CPU icon */}
-                <rect x="6" y="6" width="12" height="12" rx="1" stroke="currentColor" strokeWidth="2" />
-                <rect x="9" y="9" width="6" height="6" rx="1" fill="currentColor" opacity="0.3" />
-                <line x1="12" y1="2" x2="12" y2="6" stroke="currentColor" strokeWidth="2" />
-                <line x1="12" y1="18" x2="12" y2="22" stroke="currentColor" strokeWidth="2" />
-                <line x1="2" y1="12" x2="6" y2="12" stroke="currentColor" strokeWidth="2" />
-                <line x1="18" y1="12" x2="22" y2="12" stroke="currentColor" strokeWidth="2" />
-              </svg>
-              <span>ROBO-ASSIST</span>
-            </div>
-            <div className={styles.headerActions}>
+        <div className={`${styles.chatPanel} ${isQuestionsOpen ? styles.chatPanelExpanded : ''}`}>
+          {/* Questions Side Panel */}
+          <div className={`${styles.questionsPanel} ${isQuestionsOpen ? styles.questionsPanelOpen : ''}`}>
+            <div className={styles.questionsPanelHeader}>
+              <span>Common Questions</span>
               <button
-                className={styles.headerButton}
-                onClick={clearChat}
-                title="Clear chat"
+                className={styles.closePanelButton}
+                onClick={() => setIsQuestionsOpen(false)}
+                title="Close questions"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </button>
+            </div>
+            <div className={styles.questionsPanelContent}>
+              {Object.entries(COMMON_QUESTIONS).map(([category, questions]) => (
+                <div key={category} className={styles.questionCategory}>
+                  <button
+                    className={`${styles.categoryButton} ${activeCategory === category ? styles.categoryButtonActive : ''}`}
+                    onClick={() => handleCategoryClick(category)}
+                  >
+                    <span>{category}</span>
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className={`${styles.categoryArrow} ${activeCategory === category ? styles.categoryArrowOpen : ''}`}
+                    >
+                      <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  </button>
+                  {activeCategory === category && (
+                    <div className={styles.questionsList}>
+                      {questions.map((question, idx) => (
+                        <button
+                          key={idx}
+                          className={styles.questionItem}
+                          onClick={() => handleQuestionClick(question)}
+                          disabled={isLoading}
+                        >
+                          {question}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Main Chat Area */}
+          <div className={styles.chatMain}>
+            {/* Header */}
+            <div className={styles.chatHeader}>
+              <div className={styles.headerLeft}>
+                <button
+                  className={`${styles.questionsToggle} ${isQuestionsOpen ? styles.questionsToggleActive : ''}`}
+                  onClick={toggleQuestionsPanel}
+                  title="Common questions"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M8 6H21M8 12H21M8 18H21M3 6H3.01M3 12H3.01M3 18H3.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  </svg>
+                </button>
+                <div className={styles.headerTitle}>
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect x="6" y="6" width="12" height="12" rx="1" stroke="currentColor" strokeWidth="2" />
+                    <rect x="9" y="9" width="6" height="6" rx="1" fill="currentColor" opacity="0.3" />
+                    <line x1="12" y1="2" x2="12" y2="6" stroke="currentColor" strokeWidth="2" />
+                    <line x1="12" y1="18" x2="12" y2="22" stroke="currentColor" strokeWidth="2" />
+                    <line x1="2" y1="12" x2="6" y2="12" stroke="currentColor" strokeWidth="2" />
+                    <line x1="18" y1="12" x2="22" y2="12" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                  <span>ROBO-ASSIST</span>
+                </div>
+              </div>
+              <div className={styles.headerActions}>
+                <button
+                  className={styles.headerButton}
+                  onClick={clearChat}
+                  title="Clear chat"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3 6H5H21M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  className={styles.headerButton}
+                  onClick={() => setIsOpen(false)}
+                  title="Close chat"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M18 6L6 18M6 6L18 18"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Selected Text Banner */}
+            {selectedText && (
+              <div className={styles.selectedTextBanner}>
+                <div className={styles.selectedTextContent}>
+                  <span className={styles.selectedTextLabel}>Selected text:</span>
+                  <span className={styles.selectedTextPreview}>
+                    {selectedText.length > 100
+                      ? selectedText.substring(0, 100) + '...'
+                      : selectedText}
+                  </span>
+                </div>
+                <button
+                  className={styles.dismissButton}
+                  onClick={dismissSelectedText}
+                  title="Clear selection"
+                >
+                  x
+                </button>
+              </div>
+            )}
+
+            {/* Messages */}
+            <div className={styles.messagesContainer}>
+              {messages.length === 0 && (
+                <div className={styles.welcomeMessage}>
+                  <h4>[ SYSTEM ONLINE ]</h4>
+                  <p>
+                    Physical AI knowledge database loaded. Query robotics, embodied AI,
+                    ROS 2, simulation protocols, and more. Select text for contextual analysis.
+                  </p>
+                  <p className={styles.tipText}>
+                    Click the <strong>menu icon</strong> in the header to browse common questions by topic.
+                  </p>
+                  <div className={styles.suggestionList}>
+                    <button
+                      className={styles.suggestionButton}
+                      onClick={() => sendMessage('What is embodied intelligence?')}
+                    >
+                      Query: Embodied Intelligence
+                    </button>
+                    <button
+                      className={styles.suggestionButton}
+                      onClick={() => sendMessage('Explain the sensorimotor loop')}
+                    >
+                      Query: Sensorimotor Loop
+                    </button>
+                    <button
+                      className={styles.suggestionButton}
+                      onClick={() => sendMessage('What is sim-to-real transfer?')}
+                    >
+                      Query: Sim-to-Real Transfer
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`${styles.message} ${
+                    message.type === 'user' ? styles.userMessage : styles.assistantMessage
+                  }`}
+                >
+                  <div className={styles.messageContent}>
+                    {message.content}
+                  </div>
+                </div>
+              ))}
+
+              {isLoading && !streamingContentRef.current && (
+                <div className={`${styles.message} ${styles.assistantMessage}`}>
+                  <div className={styles.typingIndicator}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              )}
+
+              {error && (
+                <div className={styles.errorMessage}>
+                  {error}
+                </div>
+              )}
+
+              <div ref={messagesEndRef} />
+            </div>
+
+            {/* Input Area */}
+            <form className={styles.inputArea} onSubmit={handleSubmit}>
+              <textarea
+                ref={inputRef}
+                className={styles.input}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder={
+                  selectedText
+                    ? 'Ask about the selected text...'
+                    : 'Ask a question about the book...'
+                }
+                disabled={isLoading}
+                rows={1}
+              />
+              <button
+                type="submit"
+                className={styles.sendButton}
+                disabled={isLoading || !inputValue.trim()}
+                title="Send message"
               >
                 <svg
-                  width="16"
-                  height="16"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    d="M3 6H5H21M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6H19Z"
+                    d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
@@ -372,154 +642,8 @@ export default function ChatWidget(): JSX.Element {
                   />
                 </svg>
               </button>
-              <button
-                className={styles.headerButton}
-                onClick={() => setIsOpen(false)}
-                title="Close chat"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 6L6 18M6 6L18 18"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </div>
+            </form>
           </div>
-
-          {/* Selected Text Banner */}
-          {selectedText && (
-            <div className={styles.selectedTextBanner}>
-              <div className={styles.selectedTextContent}>
-                <span className={styles.selectedTextLabel}>Selected text:</span>
-                <span className={styles.selectedTextPreview}>
-                  {selectedText.length > 100
-                    ? selectedText.substring(0, 100) + '...'
-                    : selectedText}
-                </span>
-              </div>
-              <button
-                className={styles.dismissButton}
-                onClick={dismissSelectedText}
-                title="Clear selection"
-              >
-                ×
-              </button>
-            </div>
-          )}
-
-          {/* Messages */}
-          <div className={styles.messagesContainer}>
-            {messages.length === 0 && (
-              <div className={styles.welcomeMessage}>
-                <h4>[ SYSTEM ONLINE ]</h4>
-                <p>
-                  Physical AI knowledge database loaded. Query robotics, embodied AI,
-                  ROS 2, simulation protocols, and more. Select text for contextual analysis.
-                </p>
-                <div className={styles.suggestionList}>
-                  <button
-                    className={styles.suggestionButton}
-                    onClick={() => sendMessage('What is embodied intelligence?')}
-                  >
-                    Query: Embodied Intelligence
-                  </button>
-                  <button
-                    className={styles.suggestionButton}
-                    onClick={() => sendMessage('Explain the sensorimotor loop')}
-                  >
-                    Query: Sensorimotor Loop
-                  </button>
-                  <button
-                    className={styles.suggestionButton}
-                    onClick={() => sendMessage('What is sim-to-real transfer?')}
-                  >
-                    Query: Sim-to-Real Transfer
-                  </button>
-                </div>
-              </div>
-            )}
-
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`${styles.message} ${
-                  message.type === 'user' ? styles.userMessage : styles.assistantMessage
-                }`}
-              >
-                <div className={styles.messageContent}>
-                  {message.content}
-                </div>
-              </div>
-            ))}
-
-            {isLoading && !streamingContentRef.current && (
-              <div className={`${styles.message} ${styles.assistantMessage}`}>
-                <div className={styles.typingIndicator}>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            )}
-
-            {error && (
-              <div className={styles.errorMessage}>
-                {error}
-              </div>
-            )}
-
-            <div ref={messagesEndRef} />
-          </div>
-
-          {/* Input Area */}
-          <form className={styles.inputArea} onSubmit={handleSubmit}>
-            <textarea
-              ref={inputRef}
-              className={styles.input}
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder={
-                selectedText
-                  ? 'Ask about the selected text...'
-                  : 'Ask a question about the book...'
-              }
-              disabled={isLoading}
-              rows={1}
-            />
-            <button
-              type="submit"
-              className={styles.sendButton}
-              disabled={isLoading || !inputValue.trim()}
-              title="Send message"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-          </form>
         </div>
       )}
     </div>
