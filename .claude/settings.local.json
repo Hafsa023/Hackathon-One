@@ -30,7 +30,15 @@
       "Bash(then echo \"EXISTS\")",
       "Bash(else echo \"NOT_FOUND\")",
       "Bash(chmod:*)",
-      "Bash(railway whoami:*)"
+      "Bash(railway whoami:*)",
+      "Bash(npm start)",
+      "Bash(taskkill //F //PID 6032)",
+      "Bash(taskkill //F //PID 18728)",
+      "Bash(netsh advfirewall firewall:*)",
+      "Bash(D:\\\\Book_chatbot\\\\backend\\\\venv\\\\Scripts\\\\python.exe -m uvicorn:*)",
+      "Bash(\"D:/Book_chatbot/backend/venv/Scripts/python.exe\" -m uvicorn:*)",
+      "Bash(if [ -f \"D:/Book_chatbot/backend/.env\" ])",
+      "WebFetch(domain:www.alibabacloud.com)"
     ]
   }
 }

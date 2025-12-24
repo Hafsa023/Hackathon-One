@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browser Test</title>
+</head>
+<body>
+    <h1>Testing Browser Connectivity</h1>
+    <p>Testing connection to local server...</p>
+    <div id="result"></div>
+
+    <script>
+        async function testConnection() {
+            const ports = [8080, 3000];
+            const result = document.getElementById('result');
+
+            for (const port of ports) {
+                try {
+                    const response = await fetch(`http://127.0.0.1:${port}/`);
+                    result.innerHTML += `<p style="color: green;">✓ Port ${port}: Connected! Status ${response.status}</p>`;
+                    result.innerHTML += `<p><a href="http://127.0.0.1:${port}/" target="_blank">Open site on port ${port}</a></p>`;
+                } catch (error) {
+                    result.innerHTML += `<p style="color: red;">✗ Port ${port}: ${error.message}</p>`;
+                }
+            }
+        }
+
+        testConnection();
+    </script>
+</body>
+</html>

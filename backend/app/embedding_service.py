@@ -13,17 +13,17 @@ settings = get_settings()
 
 
 class EmbeddingService:
-    """Service for generating text embeddings using OpenRouter."""
+    """Service for generating text embeddings using DashScope."""
 
     def __init__(self):
         self.client = OpenAI(
             api_key=settings.qwen_api_key,
             base_url=settings.qwen_base_url,
         )
-        # Use a model that supports embeddings on OpenRouter
-        self.model = "openai/text-embedding-3-small"
-        self.embedding_dim = 1536  # text-embedding-3-small outputs 1536 dimensions
-        print(f"Embedding service initialized (OpenRouter {self.model}, dim={self.embedding_dim})")
+        # Use DashScope's embedding model
+        self.model = settings.qwen_embedding_model
+        self.embedding_dim = 1024  # text-embedding-v3 outputs 1024 dimensions
+        print(f"Embedding service initialized (DashScope {self.model}, dim={self.embedding_dim})")
 
     def get_embedding(self, text: str) -> List[float]:
         """Get embedding vector for a single text."""
