@@ -34,9 +34,8 @@ interface ChatResponse {
   timestamp: string;
 }
 
-// Configuration - Update this to your backend URL
-// Note: In Docusaurus, use docusaurus.config.js customFields for production
-const API_BASE_URL = 'http://localhost:8000';
+// Configuration - Backend URL (Railway deployed)
+const API_BASE_URL = 'https://brilliant-alignment-production-75b3.up.railway.app';
 
 // Generate unique ID
 const generateId = (): string => {
