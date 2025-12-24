@@ -21,4 +21,5 @@ COPY scripts/ scripts/
 # Expose port
 EXPOSE 8000
 
-# Note: Start command is set in Railway dashboard or Procfile
+# Run the application with fixed port
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
